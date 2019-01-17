@@ -19,14 +19,14 @@ public class TestingMain {
         int var1 = 5;
         int var2 = 8;
 
-        if (calculator.add(var1, var2) == var1 + var2) {
+        if (calculator.add(var1, var2) == 13) {
             System.out.println("test2 OK");
         } else {
             System.out.println("test2 Error!");
         }
 
 
-        if (calculator.substract(var1, var2) == var1 - var2) {
+        if (calculator.substract(var1, var2) == -3) {
             System.out.println("test3 OK");
         } else {
             System.out.println("test3 Error!");
