@@ -1,13 +1,9 @@
 package com.kodilla.testing.collection;
 
-import javafx.beans.binding.When;
 import org.junit.*;
-import com.kodilla.testing.collection.OddNumbersExterminator;
-import org.junit.rules.MethodRule;
 import org.junit.rules.TestWatcher;
-import org.junit.rules.TestWatchman;
 import org.junit.runner.Description;
-import org.junit.runners.model.FrameworkMethod;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +22,7 @@ public class CollectionTestSuite {
     public TestWatcher watcherFinished = new TestWatcher() {
         @Override
         protected void finished(Description description) {
-            System.out.println("Starting test: " + description.getMethodName());
+            System.out.println("Finished test: " + description.getMethodName());
         }
     };
 
@@ -35,16 +31,13 @@ public class CollectionTestSuite {
 
 
         //Given
-        List<Integer> normalList = new ArrayList<Integer>();
-
-        List<Integer> expectedResult = new ArrayList<Integer>();
+        List<Integer> emptyList = new ArrayList<Integer>();
 
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
-        ArrayList<Integer> result = oddNumbersExterminator.exterminate((ArrayList<Integer>) normalList);
+        ArrayList<Integer> result = oddNumbersExterminator.exterminate((ArrayList<Integer>) emptyList);
         //Then
-        if(result.size()==0) {
-        };
+        Assert.assertTrue(result.size() == 0);
 
     }
 
