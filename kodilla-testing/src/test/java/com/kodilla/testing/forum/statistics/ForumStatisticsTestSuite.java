@@ -138,9 +138,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<0; i++) {
-            users.add("a");
-        }
+
         when(statisticsMock.usersNames()).thenReturn(users);
         when(statisticsMock.postsCount()).thenReturn(1000);
         when(statisticsMock.commentsCount()).thenReturn(1000);
@@ -178,6 +176,7 @@ public class ForumStatisticsTestSuite {
 
         //Then
         Assert.assertArrayEquals(expected, statistics,0.005);
+
 
     }
 

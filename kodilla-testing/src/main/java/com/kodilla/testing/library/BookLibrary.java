@@ -1,6 +1,7 @@
 package com.kodilla.testing.library;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class BookLibrary {
@@ -20,10 +21,7 @@ public class BookLibrary {
         return bookList;
     }
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
-        List<Book> theList = new ArrayList<Book>();
-        Book book = new Book("W pustyni i w puszczy","Henryk Sienkiewicz", 1987);
-        theList.add(book);
-
+        List<Book> theList = libraryDatabase.listBooksInHandsOf(libraryUser);
         return theList;
 
     }

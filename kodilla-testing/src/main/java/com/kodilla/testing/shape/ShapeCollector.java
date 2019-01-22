@@ -7,19 +7,15 @@ public class ShapeCollector {
 
     private List<Shape> shapeCollection = new ArrayList<Shape>();
 
+
     public void addFigure(Shape shape){
         shapeCollection.add(shape);
     }
 
-    public boolean removeFigure(Shape shape){
-        boolean result = false;
-        if(shapeCollection.contains(shape)) {
-            shapeCollection.remove(shape);
-            result = true;
-        }
-        return result;
-
+    public boolean removeFigure(Shape shape) {
+        return shapeCollection.remove(shape);
     }
+
 
     public Shape getFigure(int n){
         Shape figure = shapeCollection.get(n);
@@ -27,7 +23,7 @@ public class ShapeCollector {
     }
 
     public List<Shape> showFigures(){
-        return shapeCollection;
+        return Collections.unmodifiableList(shapeCollection);
     }
 
     public int listSize(){
