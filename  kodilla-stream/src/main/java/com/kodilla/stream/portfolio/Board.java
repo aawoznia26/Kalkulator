@@ -3,6 +3,8 @@ package com.kodilla.stream.portfolio;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 public final class Board {
     private final List<TaskList> taskLists = new ArrayList<>();
     private final String name;
@@ -33,5 +35,21 @@ public final class Board {
                 "name='" + name + '\'' + ",\n" +
                 "taskLists=" + taskLists + "\n" +
                 '}';
+    }
+
+    public List<Task> getUserTasks(User user){
+        List<Task> tasks = getTaskLists().stream()
+                .flatMap(l -> l.getTasks().stream())
+                .filter(t -> t.getAssignedUser().equals(user))
+                .collect(toList());
+        return tasks;
+    }
+
+    public List<Task> getTasksFromTheLists(List<TaskList> taskLists) {
+        List<Task> tasks = getTaskLists().stream()
+                .filter(taskLists::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .collect(toList());
+        return tasks;
     }
 }

@@ -6,8 +6,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
 
 import static java.util.stream.Collectors.toList;
 
@@ -90,14 +89,12 @@ public class BoardTestSuite {
         Board project = prepareTestData();
         //When
         User user = new User("developer1", "John Smith");
-        List<Task> tasks = project.getTaskLists().stream()
-                .flatMap(l -> l.getTasks().stream())
-                .filter(t -> t.getAssignedUser().equals(user))
-                .collect(toList());
+        List<Task> userTasks = project.getUserTasks(user);
+
         //Then
-        Assert.assertEquals(2, tasks.size());
-        Assert.assertEquals(user, tasks.get(0).getAssignedUser());
-        Assert.assertEquals(user, tasks.get(1).getAssignedUser());
+        Assert.assertEquals(2, userTasks.size());
+        Assert.assertEquals(user, userTasks.get(0).getAssignedUser());
+        Assert.assertEquals(user, userTasks.get(1).getAssignedUser());
     }
 
     @Test
@@ -109,9 +106,7 @@ public class BoardTestSuite {
         List<TaskList> undoneTasks = new ArrayList<>();
         undoneTasks.add(new TaskList("To do"));
         undoneTasks.add(new TaskList("In progress"));
-        List<Task> tasks = project.getTaskLists().stream()
-                .filter(undoneTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
+        List<Task> tasks = project.getTasksFromTheLists(undoneTasks).stream()
                 .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
                 .collect(toList());
 
@@ -128,9 +123,7 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long longTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
+        long longTasks = project.getTasksFromTheLists(inProgressTasks).stream()
                 .map(t -> t.getCreated())
                 .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
                 .count();
@@ -147,9 +140,7 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double tasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
+        double tasks  = project.getTasksFromTheLists(inProgressTasks).stream()
                 .map(t -> Period.between(t.getCreated(), LocalDate.now()))
                 .map(p -> p.getDays())
                 .mapToDouble(Integer::doubleValue)
