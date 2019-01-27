@@ -147,7 +147,7 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double longTasks = project.getTaskLists().stream()
+        double tasks = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> Period.between(t.getCreated(), LocalDate.now()))
@@ -157,6 +157,6 @@ public class BoardTestSuite {
                 .orElse(-0.0);
 
         //Then
-        Assert.assertEquals(10, longTasks, 0.01);
+        Assert.assertEquals(10, tasks, 0.01);
     }
 }
