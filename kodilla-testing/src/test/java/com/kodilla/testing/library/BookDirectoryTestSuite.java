@@ -2,10 +2,7 @@ package com.kodilla.testing.library;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -94,18 +91,35 @@ public class BookDirectoryTestSuite {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
 
-        LibraryUser user1 = new LibraryUser("Marcin", "Krasnodębski","8392837272743");
-        List<Book> resultListOf1Books = generateListOfNBooks(1);
+        Map<LibraryUser, List<Book>> booksInHandsOf = new HashMap<LibraryUser, List<Book>>();
+
+        LibraryUser user1 = new LibraryUser("Marcin", "Krasnodębski", "8392837272743");
+        LibraryUser user2 = new LibraryUser("Kacper", "Baran", "8499372637484");
+
+        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
+        Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
+        Book book4 = new Book("Secrets of Java", "Ian Tenewitch", 2010);
+        Book book5 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 1987);
+
+        List<Book> user1List = new ArrayList<>(Arrays.asList(book1));
+        List<Book> user2List = new ArrayList<>(Arrays.asList(book2, book3, book4,book5));
+
+
+        booksInHandsOf.put(user1, user1List);
+        booksInHandsOf.put(user2, user2List);
+
 
         when(libraryDatabaseMock.listBooksInHandsOf(user1))
-                .thenReturn(resultListOf1Books);
+                .thenReturn(user1List);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
 
         // When
-        List<Book> theListOf1Books = bookLibrary.listBooksInHandsOf(user1);
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(user1);
 
         // Then
-        assertEquals(1, theListOf1Books.size());
+        assertEquals(1, theListOfBooks.size());
+
     }
 
     @Test
@@ -113,38 +127,71 @@ public class BookDirectoryTestSuite {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
 
-        LibraryUser user1 = new LibraryUser("Marcin", "Krasnodębski","8392837272743");
-        List<Book> resultListOf5Books = generateListOfNBooks(5);
+        Map<LibraryUser, List<Book>> booksInHandsOf = new HashMap<LibraryUser, List<Book>>();
 
-        when(libraryDatabaseMock.listBooksInHandsOf(user1))
-                .thenReturn(resultListOf5Books);
+        LibraryUser user1 = new LibraryUser("Marcin", "Krasnodębski", "8392837272743");
+        LibraryUser user2 = new LibraryUser("Kacper", "Baran", "8499372637484");
+
+        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
+        Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
+        Book book4 = new Book("Secrets of Java", "Ian Tenewitch", 2010);
+        Book book5 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 1987);
+
+        List<Book> user1List = new ArrayList<>(Arrays.asList());
+        List<Book> user2List = new ArrayList<>(Arrays.asList(book1, book2, book3, book4,book5));
+
+
+        booksInHandsOf.put(user1, user1List);
+        booksInHandsOf.put(user2, user2List);
+
+
+        when(libraryDatabaseMock.listBooksInHandsOf(user2))
+                .thenReturn(user2List);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
 
         // When
-        List<Book> theListOf5Books = bookLibrary.listBooksInHandsOf(user1);
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(user2);
 
         // Then
-        assertEquals(5, theListOf5Books.size());
+        assertEquals(5, theListOfBooks.size());
+
     }
 
 
     @Test
-    public void testListBooksInHandsOf0Books() {
+    public void testListBooksInHandsOf0Book() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
 
-        LibraryUser user1 = new LibraryUser("Marcin", "Krasnodębski","8392837272743");
-        List<Book> resultListOf0Books = generateListOfNBooks(0);
+        Map<LibraryUser, List<Book>> booksInHandsOf = new HashMap<LibraryUser, List<Book>>();
 
-        when(libraryDatabaseMock.listBooksInHandsOf(any()))
-                .thenReturn(resultListOf0Books);
+        LibraryUser user1 = new LibraryUser("Marcin", "Krasnodębski", "8392837272743");
+        LibraryUser user2 = new LibraryUser("Kacper", "Baran", "8499372637484");
+
+        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
+        Book book3 = new Book("Secret life of programmers", "Steve Wolkowitz", 2016);
+        Book book4 = new Book("Secrets of Java", "Ian Tenewitch", 2010);
+        Book book5 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 1987);
+
+        List<Book> user1List = new ArrayList<>(Arrays.asList());
+        List<Book> user2List = new ArrayList<>(Arrays.asList(book1, book2, book3, book4,book5));
+
+
+        booksInHandsOf.put(user1, user1List);
+        booksInHandsOf.put(user2, user2List);
+
+
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
+                .thenReturn(user1List);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
 
         // When
-        List<Book> theListOfBooks0 = bookLibrary.listBooksInHandsOf(user1);
+        List<Book> theListOfBooks = bookLibrary.listBooksInHandsOf(user1);
 
         // Then
-        assertEquals(0, theListOfBooks0.size());
-        verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
+        assertEquals(0, theListOfBooks.size());
+
     }
 }
