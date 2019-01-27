@@ -22,42 +22,42 @@ public class WorldTestSuite {
         BigDecimal peopleQuantity9 = new BigDecimal(190632261);
         BigDecimal peopleQuantity10 = new BigDecimal(1281935911);
 
-        Country country1 = new Country("Hiszpania", peopleQuantity1);
-        Country country2 = new Country("Polska", peopleQuantity2);
-        Country country3 = new Country("Uganda", peopleQuantity3);
-        Country country4 = new Country("Rumunia", peopleQuantity4);
-        Country country5 = new Country("Wenezuela", peopleQuantity5);
-        Country country6 = new Country("Wietnam", peopleQuantity6);
-        Country country7 = new Country("Stany Zjednoczone", peopleQuantity7);
-        Country country8 = new Country("Brazylia", peopleQuantity8);
-        Country country9 = new Country("Nigeria", peopleQuantity9);
-        Country country10 = new Country("Indie", peopleQuantity10);
+        Country spain = new Country("Hiszpania", peopleQuantity1);
+        Country poland = new Country("Polska", peopleQuantity2);
+        Country uganda = new Country("Uganda", peopleQuantity3);
+        Country romania = new Country("Rumunia", peopleQuantity4);
+        Country venezuela = new Country("Wenezuela", peopleQuantity5);
+        Country vietnam = new Country("Wietnam", peopleQuantity6);
+        Country usa = new Country("Stany Zjednoczone", peopleQuantity7);
+        Country brazyl = new Country("Brazylia", peopleQuantity8);
+        Country nigeria = new Country("Nigeria", peopleQuantity9);
+        Country india = new Country("Indie", peopleQuantity10);
 
-        Continent continent1 = new Continent("Europa");
-        Continent continent2 = new Continent("Azja");
-        Continent continent3 = new Continent("Afryka");
-        Continent continent4 = new Continent("Ameryka Południowa");
-        Continent continent5 = new Continent("Ameryka Północna");
+        Continent europe = new Continent("Europa");
+        Continent asia = new Continent("Azja");
+        Continent africa = new Continent("Afryka");
+        Continent northAmerica = new Continent("Ameryka Południowa");
+        Continent southAmerica = new Continent("Ameryka Północna");
 
 
         //When
         World world = new World();
-        world.addContinent(continent1);
-        world.addContinent(continent2);
-        world.addContinent(continent3);
-        world.addContinent(continent4);
-        world.addContinent(continent5);
+        world.addContinent(europe);
+        world.addContinent(asia);
+        world.addContinent(africa);
+        world.addContinent(northAmerica);
+        world.addContinent(southAmerica);
 
-        continent1.addCountry(country1);
-        continent1.addCountry(country2);
-        continent1.addCountry(country4);
-        continent3.addCountry(country3);
-        continent3.addCountry(country9);
-        continent4.addCountry(country5);
-        continent4.addCountry(country8);
-        continent2.addCountry(country6);
-        continent2.addCountry(country10);
-        continent5.addCountry(country7);
+        europe.addCountry(spain);
+        europe.addCountry(poland);
+        europe.addCountry(romania);
+        africa.addCountry(uganda);
+        africa.addCountry(nigeria);
+        northAmerica.addCountry(venezuela);
+        northAmerica.addCountry(brazyl);
+        asia.addCountry(vietnam);
+        asia.addCountry(india);
+        southAmerica.addCountry(usa);
 
         BigDecimal worldPeopleSum = world.getPeopleQuantity();
 
