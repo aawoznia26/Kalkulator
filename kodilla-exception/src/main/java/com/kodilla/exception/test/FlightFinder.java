@@ -25,7 +25,6 @@ public class FlightFinder {
         } catch (NullPointerException e){
 
         }
-        System.out.println("Czy lot jest możliwy? " + isFlightPossible);
         return isFlightPossible;
     }
 
@@ -51,7 +50,7 @@ public class FlightFinder {
         } catch (NullPointerException e){
 
         }
-        System.out.println("Czy zanleziono lot? " + isFlightFound);
+
         return isFlightFound;
     }
 

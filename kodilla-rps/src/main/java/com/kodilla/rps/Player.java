@@ -1,12 +1,12 @@
 package com.kodilla.rps;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
 
     private String name;
-
 
     public Player(String name) {
         this.name = name;
@@ -17,32 +17,33 @@ public class Player {
     }
 
 
-    public String drawMove() {
+    public Rps.Move drawMove() {
         Random generator = new Random();
-        int result = generator.nextInt(3);
-        String rpsMove;
-        if(result == 0){
-            rpsMove = "kamień";
-        } else if (result == 1){
-            rpsMove = "papier";
-        } else {
-            rpsMove = "nożyce";
-        }
-        return rpsMove;
+        final Rps.Move[] moves = Rps.Move.values();
+        return moves[generator.nextInt(3)];
     }
 
-    public String getMove() {
-        Scanner moveScanner = new Scanner(System.in);
-        int result = moveScanner.nextInt();
-        String rpsMove = null;
-        if(result == 1){
-            rpsMove = "kamień";
-        } else if (result == 2){
-            rpsMove = "papier";
-        } else if (result == 3){
-            rpsMove = "nożyce";
+    public Rps.Move getMove() throws java.lang.Exception{
+
+        try {
+            Scanner moveScanner = new Scanner(System.in);
+            final Rps.Move[]moves = Rps.Move.values();
+            return moves[moveScanner.nextInt()-1];
+
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Ten ruch jest niedozwolony! Spróbuj ponownie.");
+            Scanner moveScanner = new Scanner(System.in);
+            final Rps.Move[]moves = Rps.Move.values();
+            return moves[moveScanner.nextInt()-1];
+
+        } catch (InputMismatchException e){
+            System.out.println("Wprowadź 1 - kamień, 2 - papier, 3 - nożyce");
+            Scanner moveScanner = new Scanner(System.in);
+            final Rps.Move[]moves = Rps.Move.values();
+            return moves[moveScanner.nextInt()-1];
+
         }
-        return rpsMove;
+
     }
 
 }
