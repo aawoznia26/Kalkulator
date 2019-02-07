@@ -7,7 +7,7 @@ import static com.kodilla.rps.RpsRunner.scanWonRounds;
 public class Rps {
 
     public enum Move{
-        kamień, papier, nożyce
+        STONE, PAPER, SCISSORS
     }
 
     public enum EndDecision {
@@ -25,9 +25,9 @@ public class Rps {
         List<Integer> playerRoundResults = new ArrayList<>();
         Map<Move,Move> reactionOnPlayerMove = new HashMap<>();
 
-        reactionOnPlayerMove.put(Move.kamień, Move.papier);
-        reactionOnPlayerMove.put(Move.papier, Move.nożyce);
-        reactionOnPlayerMove.put(Move.nożyce, Move.kamień);
+        reactionOnPlayerMove.put(Move.STONE, Move.PAPER);
+        reactionOnPlayerMove.put(Move.PAPER, Move.SCISSORS);
+        reactionOnPlayerMove.put(Move.SCISSORS, Move.STONE);
 
         while(!end) {
             System.out.println("Wykonaj ruch");
@@ -52,17 +52,17 @@ public class Rps {
 
 
             Map<GameRound, List<Integer>> gameMap = new HashMap<>();
-            gameMap.put(new GameRound(Move.kamień,Move.papier), Arrays.asList(0,1));
-            gameMap.put(new GameRound(Move.kamień,Move.nożyce),Arrays.asList(1,0));
-            gameMap.put(new GameRound(Move.kamień,Move.kamień),Arrays.asList(0,0));
+            gameMap.put(new GameRound(Move.STONE,Move.PAPER), Arrays.asList(0,1));
+            gameMap.put(new GameRound(Move.STONE,Move.SCISSORS),Arrays.asList(1,0));
+            gameMap.put(new GameRound(Move.STONE,Move.STONE),Arrays.asList(0,0));
 
-            gameMap.put(new GameRound(Move.papier,Move.kamień),Arrays.asList(1,0));
-            gameMap.put(new GameRound(Move.papier,Move.nożyce),Arrays.asList(0,1));
-            gameMap.put(new GameRound(Move.papier,Move.papier),Arrays.asList(0,0));
+            gameMap.put(new GameRound(Move.PAPER,Move.STONE),Arrays.asList(1,0));
+            gameMap.put(new GameRound(Move.PAPER,Move.SCISSORS),Arrays.asList(0,1));
+            gameMap.put(new GameRound(Move.PAPER,Move.PAPER),Arrays.asList(0,0));
 
-            gameMap.put(new GameRound(Move.nożyce,Move.kamień),Arrays.asList(0,1));
-            gameMap.put(new GameRound(Move.nożyce,Move.papier),Arrays.asList(1,0));
-            gameMap.put(new GameRound(Move.nożyce,Move.nożyce),Arrays.asList(0,0));
+            gameMap.put(new GameRound(Move.SCISSORS,Move.STONE),Arrays.asList(0,1));
+            gameMap.put(new GameRound(Move.SCISSORS,Move.PAPER),Arrays.asList(1,0));
+            gameMap.put(new GameRound(Move.SCISSORS,Move.SCISSORS),Arrays.asList(0,0));
 
             computerRoundResult = gameMap.get(new GameRound(computerMove,playerMove)).get(0);
             playerRoundResult = gameMap.get(new GameRound(computerMove,playerMove)).get(1);
