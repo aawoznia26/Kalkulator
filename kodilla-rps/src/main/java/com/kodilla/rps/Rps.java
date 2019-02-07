@@ -13,19 +13,42 @@ public class Rps {
     public enum EndDecision {
         n, x
     }
+    private int computerRoundResult;
+    private int playerRoundResult;
 
     public void playRps(Player player, Player computer, int numberOfWonRunds) throws java.lang.Exception {
         boolean end = false;
         int rundNumber = 0;
         int computerResult = 0;
-        int userResult = 0;
+        int playerResult = 0;
+        List<Move> playerMoves = new ArrayList<>();
+        List<Integer> playerRoundResults = new ArrayList<>();
+        Map<Move,Move> reactionOnPlayerMove = new HashMap<>();
+
+        reactionOnPlayerMove.put(Move.kamień, Move.papier);
+        reactionOnPlayerMove.put(Move.papier, Move.nożyce);
+        reactionOnPlayerMove.put(Move.nożyce, Move.kamień);
 
         while(!end) {
             System.out.println("Wykonaj ruch");
+
             Move playerMove = player.getMove();
-            Move computerMove = computer.drawMove();
-            int computerRoundResult = 0;
-            int userRoundResult = 0;
+            Move computerMove = null;
+            if(rundNumber>=2 && playerRoundResult==1) {
+                computerMove= reactionOnPlayerMove.get(playerMoves.get(rundNumber-1));
+            } else if (rundNumber>=2 &&(playerRoundResults.get(rundNumber-1) + playerRoundResults.get(rundNumber-2))==0 && playerMoves.get(rundNumber-2).equals(playerMoves.get(rundNumber-1))) {
+                while(computerMove!=reactionOnPlayerMove.get(playerMoves.get(rundNumber-1))){
+                    computerMove = computer.drawMove(); 
+                }
+                computerMove = computer.drawMove();
+            } else {
+                computerMove = computer.drawMove();
+            }
+
+            playerMoves.add(playerMove);
+
+            computerRoundResult = 0;
+            playerRoundResult = 0;
 
 
             Map<GameRound, List<Integer>> gameMap = new HashMap<>();
@@ -42,29 +65,30 @@ public class Rps {
             gameMap.put(new GameRound(Move.nożyce,Move.nożyce),Arrays.asList(0,0));
 
             computerRoundResult = gameMap.get(new GameRound(computerMove,playerMove)).get(0);
-            userRoundResult = gameMap.get(new GameRound(computerMove,playerMove)).get(1);
+            playerRoundResult = gameMap.get(new GameRound(computerMove,playerMove)).get(1);
 
             computerResult += computerRoundResult;
-            userResult += userRoundResult;
+            playerResult += playerRoundResult;
+            playerRoundResults.add(playerRoundResult);
 
             rundNumber++;
-            if (Math.max(userResult, computerResult)==numberOfWonRunds){
+            if (Math.max(playerResult, computerResult)==numberOfWonRunds){
                 end = true;
             }
 
             System.out.println("Wykonałeś ruch: " + playerMove + ", Twój przeciwnik zaś: " + computerMove);
-            System.out.println("Wynik tej rundy to: " + player.getName() + " " + userRoundResult + ", " + computer.getName() + " " + computerRoundResult);
-            System.out.println("Masymalna liczba rund wygranych przez jednego z przeciwników wynosi obecnie: " + Math.max(userResult, computerResult));
+            System.out.println("Wynik tej rundy to: " + player.getName() + " " + playerRoundResult + ", " + computer.getName() + " " + computerRoundResult);
+            System.out.println("Masymalna liczba rund wygranych przez jednego z przeciwników wynosi obecnie: " + Math.max(playerResult, computerResult));
 
         }
 
         Player winner;
-        if (computerResult>userResult) {
+        if (computerResult>playerResult) {
             winner = computer;
         } else {
             winner = player;
         }
-        System.out.println("Wynik " + player.getName() + ": " + userResult);
+        System.out.println("Wynik " + player.getName() + ": " + playerResult);
         System.out.println("Wynik " + computer.getName() + ": " + computerResult);
         System.out.println("Zwycięzcą jest " +  winner.getName() + "!");
 
