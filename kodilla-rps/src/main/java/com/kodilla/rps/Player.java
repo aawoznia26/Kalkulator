@@ -1,8 +1,6 @@
 package com.kodilla.rps;
 
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Player {
 
@@ -17,32 +15,33 @@ public class Player {
     }
 
 
-    public Rps.Move drawMove() {
+    public Move randomMove() {
         Random generator = new Random();
-        final Rps.Move[] moves = Rps.Move.values();
+        final Move[] moves = Move.values();
         return moves[generator.nextInt(3)];
     }
 
-    public Rps.Move getMove() throws java.lang.Exception{
+    public Move getMove() throws java.lang.Exception {
 
-        try {
-            Scanner moveScanner = new Scanner(System.in);
-            final Rps.Move[]moves = Rps.Move.values();
-            return moves[moveScanner.nextInt()-1];
+        Move move = null;
+        List<Integer> availableResults = new ArrayList(Arrays.asList(0,1,2));
 
-        } catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Ten ruch jest niedozwolony! Spróbuj ponownie.");
-            Scanner moveScanner = new Scanner(System.in);
-            final Rps.Move[]moves = Rps.Move.values();
-            return moves[moveScanner.nextInt()-1];
+        while (!availableResults.contains(move)) {
 
-        } catch (InputMismatchException e){
-            System.out.println("Wprowadź 1 - kamień, 2 - papier, 3 - nożyce");
-            Scanner moveScanner = new Scanner(System.in);
-            final Rps.Move[]moves = Rps.Move.values();
-            return moves[moveScanner.nextInt()-1];
+            try {
+                Scanner moveScanner = new Scanner(System.in);
+                final Move[] moves = Move.values();
+                move = moves[moveScanner.nextInt() - 1];
 
+            } catch (InputMismatchException e) {
+                System.out.println("Wprowadź 1 - kamień, 2 - papier, 3 - nożyce");
+
+            } catch(ArrayIndexOutOfBoundsException e) {
+                System.out.println("Ten ruch jest niedozwolony! Spróbuj ponownie.");
+
+            }
         }
+        return move;
 
     }
 

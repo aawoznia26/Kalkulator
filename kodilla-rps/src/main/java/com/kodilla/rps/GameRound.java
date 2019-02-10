@@ -2,10 +2,10 @@ package com.kodilla.rps;
 
 public class GameRound {
 
-    private Rps.Move computerMove;
-    private Rps.Move playerMove;
+    private Move computerMove;
+    private Move playerMove;
 
-    public GameRound(Rps.Move computerMove, Rps.Move playerMove) {
+    public GameRound(Move computerMove, Move playerMove) {
         this.computerMove = computerMove;
         this.playerMove = playerMove;
     }

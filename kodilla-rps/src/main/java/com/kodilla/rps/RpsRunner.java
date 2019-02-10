@@ -5,13 +5,16 @@ import java.util.Scanner;
 
 public class RpsRunner {
 
-    public static void main(String[] args) throws java.lang.Exception{
+    public static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) throws java.lang.Exception {
 
         System.out.println("Podaj nazwę gracza");
-        Scanner nameScanner = new Scanner(System.in);
-        String playerName = nameScanner.next();
+
+        String playerName = scanner.next();
 
         System.out.println("Do ilu wygranych rund gramy?");
+
 
         int wonRunds = scanWonRounds();
 
@@ -29,17 +32,19 @@ public class RpsRunner {
 
 
     public static int scanWonRounds() {
-        int wonRunds;
-        try {
-            Scanner wonRundsScanner = new Scanner(System.in);
-            wonRunds = wonRundsScanner.nextInt();
-
-        } catch (InputMismatchException e){
-            System.out.println("Wprowadź liczbę całkowitą");
-            Scanner wonRundsScanner = new Scanner(System.in);
-            wonRunds = wonRundsScanner.nextInt();
+        int wonRunds = 0;
+        boolean ok = false;
+        while(!ok){
+            try {
+                Scanner scanner = new Scanner(System.in);
+                wonRunds = scanner.nextInt();
+                ok = true;
+            } catch (InputMismatchException e){
+                System.out.println("Wprowadź liczbę całkowitą");
+            }
         }
         return wonRunds;
     }
+
 
 }
