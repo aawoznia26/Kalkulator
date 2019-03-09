@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
-public class App {
+public class MovieStoreApp {
     public static void main(String[] args) {
         String translations = MovieStore.getMovies().entrySet().stream()
                 .flatMap(movieList -> movieList.getValue().stream())
