@@ -1,8 +1,7 @@
 package com.kodilla.good.patterns.challenges.Food2Door.Order;
 
-import com.kodilla.good.patterns.challenges.Food2Door.Order.Order;
 import com.kodilla.good.patterns.challenges.Food2Door.Product;
-import com.kodilla.good.patterns.challenges.Food2Door.ProductOrderRepository;
+import com.kodilla.good.patterns.challenges.Food2Door.OrderRepository.ProductOrderRepository;
 import com.kodilla.good.patterns.challenges.Food2Door.Supply.OrderFromExtraFoodShop;
 import com.kodilla.good.patterns.challenges.Food2Door.Supply.OrderFromGlutenFreeShop;
 import com.kodilla.good.patterns.challenges.Food2Door.Supply.OrderFromHealthyShop;

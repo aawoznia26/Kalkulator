@@ -1,13 +1,14 @@
-package com.kodilla.good.patterns.challenges.Food2Door;
+package com.kodilla.good.patterns.challenges.Food2Door.OrderRepository;
 
 import com.kodilla.good.patterns.challenges.Food2Door.Order.Order;
+import com.kodilla.good.patterns.challenges.Food2Door.User;
 
 import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class ProductOrderRepository {
 
-    SortedMap<Order,User> productOrderRepository = new TreeMap<>();
+    SortedMap<Order, User> productOrderRepository = new TreeMap<>();
 
     public void addOrderToRepository(Order order, User user) {
         productOrderRepository.put(order, user);

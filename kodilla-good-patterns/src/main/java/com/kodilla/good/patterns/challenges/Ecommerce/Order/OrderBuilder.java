@@ -1,4 +1,9 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.Ecommerce.Order;
+
+
+import com.kodilla.good.patterns.challenges.Ecommerce.Product;
+import com.kodilla.good.patterns.challenges.Ecommerce.User;
+import com.kodilla.good.patterns.challenges.Food2Door.OrderRepository.ProductOrderRepository;
 
 import java.time.LocalDateTime;
 import java.util.Map;

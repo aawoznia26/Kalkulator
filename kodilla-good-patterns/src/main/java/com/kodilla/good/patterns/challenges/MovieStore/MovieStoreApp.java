@@ -1,9 +1,8 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.MovieStore;
 
-import java.util.Objects;
+import com.kodilla.good.patterns.challenges.MovieStore.MovieStore;
+
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 public class MovieStoreApp {
     public static void main(String[] args) {

@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.Ecommerce.InformationService;
+
+import com.kodilla.good.patterns.challenges.Ecommerce.Order.Basket;
+import com.kodilla.good.patterns.challenges.Ecommerce.User;
 
 public class InformationSender implements InformationService {
 

@@ -1,8 +1,7 @@
 package com.kodilla.good.patterns.challenges.Food2Door.Order;
 
-import com.kodilla.good.patterns.challenges.Food2Door.Order.Order;
 import com.kodilla.good.patterns.challenges.Food2Door.Product;
-import com.kodilla.good.patterns.challenges.Food2Door.ProductOrderRepository;
+import com.kodilla.good.patterns.challenges.Food2Door.OrderRepository.ProductOrderRepository;
 
 import java.time.LocalDateTime;
 import java.util.Map;

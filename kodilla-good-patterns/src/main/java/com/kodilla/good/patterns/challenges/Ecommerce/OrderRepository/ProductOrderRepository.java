@@ -1,4 +1,6 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.Ecommerce.OrderRepository;
+
+import com.kodilla.good.patterns.challenges.Ecommerce.Order.Basket;
 
 import java.util.ArrayDeque;
 

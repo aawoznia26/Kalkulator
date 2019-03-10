@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.Ecommerce.Order;
+
+import com.kodilla.good.patterns.challenges.Ecommerce.InformationService.InformationService;
+import com.kodilla.good.patterns.challenges.Ecommerce.OrderRepository.OrderRepository;
 
 public class OrderProcessor {
     private InformationService informationService;
