@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class CalculatorTestSuite {
     @Test
-    public void testCalculations() {
+    public void testAdd() {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
@@ -22,14 +22,50 @@ public class CalculatorTestSuite {
         int b = 4;
         //When
         double c = calculator.add(a, b);
-        double d = calculator.sub(a, b);
-        double e = calculator.mul(a, b);
-        double f = calculator.div(a, b);
-
-        double[] expected = {11, 3, 28, 1.75};
-        double[] counted = {c, d, e,f};
         //Then
-        Assert.assertArrayEquals(expected, counted, 0.01);
+        Assert.assertEquals(11,c, 0.01);
+    }
+
+    @Test
+    public void testSub() {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Calculator calculator = context.getBean(Calculator.class);
+        int a = 7;
+        int b = 4;
+        //When
+        double d = calculator.sub(a, b);
+        //Then
+        Assert.assertEquals(3, d, 0.01);
+    }
+
+    @Test
+    public void testMul() {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Calculator calculator = context.getBean(Calculator.class);
+        int a = 7;
+        int b = 4;
+        //When
+        double e = calculator.mul(a, b);
+        //Then
+        Assert.assertEquals(28, e, 0.01);
+    }
+
+    @Test
+    public void testDiv() {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Calculator calculator = context.getBean(Calculator.class);
+        int a = 7;
+        int b = 4;
+        //When
+        double f = calculator.div(a, b);
+        //Then
+        Assert.assertEquals(1.75, f, 0.01);
     }
 
 }
