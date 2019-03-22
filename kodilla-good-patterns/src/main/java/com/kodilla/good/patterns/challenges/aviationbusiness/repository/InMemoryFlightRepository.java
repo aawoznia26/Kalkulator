@@ -1,54 +1,72 @@
 package com.kodilla.good.patterns.challenges.aviationbusiness.repository;
 
-import com.kodilla.good.patterns.challenges.aviationbusiness.Departure;
-import com.kodilla.good.patterns.challenges.aviationbusiness.Destination;
+import com.kodilla.good.patterns.challenges.aviationbusiness.Flight;
+import com.kodilla.good.patterns.challenges.aviationbusiness.FlightAttributes;
 
+import java.time.Duration;
 import java.util.*;
+import java.util.stream.Stream;
 
-public class InMemoryFlightRepository implements FlightRepository{
+public class InMemoryFlightRepository implements FlightRepository {
 
-    private Map<Departure, List<Destination>> flightMap = new HashMap<>();
+    private Map<Flight, List<FlightAttributes>> flightMap = new HashMap<>();
 
     public InMemoryFlightRepository() {
 
-        Destination destination1 = new Destination("Paryż", "KLM", 568.98);
-        Destination destination2 = new Destination("Lwów", "Wizz Air", 568.98);
-        Destination destination3 = new Destination("Kraków", "PL LOT", 568.98);
-        Destination destination4 = new Destination("Lisbona", "Lufthansa", 568.98);
-        Destination destination5 = new Destination("Rzym", "Rayanair", 568.98);
-        Destination destination6 = new Destination("Londyn", "Lufthansa", 568.98);
-        Destination destination7 = new Destination("Neapol", "easyJet", 568.98);
+        Flight flight1 = new Flight("Paryż", "Lisbona");
+        Flight flight2 = new Flight("Lwów", "Warszawa-Modlin");
+        Flight flight3 = new Flight("Berlin", "Gdańsk");
+        Flight flight4 = new Flight("Lisbona", "Madryt");
+        Flight flight5 = new Flight("Rzym", "Paryż");
+        Flight flight6 = new Flight("Paryż", "Berlin");
+        Flight flight7 = new Flight("Madryt", "Gdańsk");
 
-        Departure departure1 = new Departure("Ovda");
-        Departure departure2 = new Departure("Warszawa-Modlin");
-        Departure departure3 = new Departure("Lwów");
-        Departure departure4 = new Departure("Madryt");
-        Departure departure5 = new Departure("Paryż");
-        Departure departure6 = new Departure("Gdańsk");
-        Departure departure7 = new Departure("Neapol");
+        FlightAttributes flightAttribute1 = new FlightAttributes("KLM", 453.76, Duration.ofMinutes(561));
+        FlightAttributes flightAttribute2 = new FlightAttributes("Wizz Air", 1233, Duration.ofMinutes(432));
+        FlightAttributes flightAttribute3 = new FlightAttributes("PL LOT", 234.90, Duration.ofMinutes(125));
+        FlightAttributes flightAttribute4 = new FlightAttributes("Lufthansa", 100, Duration.ofMinutes(345));
+        FlightAttributes flightAttribute5 = new FlightAttributes("Rayanair", 234.32, Duration.ofMinutes(87));
+        FlightAttributes flightAttribute6 = new FlightAttributes("Lufthansa", 335.22, Duration.ofMinutes(234));
+        FlightAttributes flightAttribute7 = new FlightAttributes("easyJet", 1234, Duration.ofMinutes(186));
 
-        flightMap.put(departure1, Arrays.asList(destination2, destination6, destination7));
-        flightMap.put(departure2, Arrays.asList(destination1, destination3, destination4));
-        flightMap.put(departure3, Arrays.asList(destination1));
-        flightMap.put(departure4, Arrays.asList(destination5, destination6));
-        flightMap.put(departure5, Arrays.asList(destination3, destination4, destination6, destination7));
-        flightMap.put(departure6, Arrays.asList(destination2, destination4, destination6));
-        flightMap.put(departure7, Arrays.asList(destination3));
+        flightMap.put(flight1, Arrays.asList(flightAttribute2, flightAttribute6, flightAttribute7));
+        flightMap.put(flight2, Arrays.asList(flightAttribute1, flightAttribute3, flightAttribute4));
+        flightMap.put(flight3, Arrays.asList(flightAttribute1));
+        flightMap.put(flight4, Arrays.asList(flightAttribute5, flightAttribute6));
+        flightMap.put(flight5, Arrays.asList(flightAttribute3, flightAttribute4, flightAttribute6, flightAttribute7));
+        flightMap.put(flight6, Arrays.asList(flightAttribute2, flightAttribute4, flightAttribute6));
+        flightMap.put(flight7, Arrays.asList(flightAttribute3));
 
     }
 
-    public Map<Departure, List<Destination>> getFlightMap() {
+    public Map<Flight, List<FlightAttributes>> getFlightMap() {
         return flightMap;
     }
 
-    public void addFlightToRepository(Departure departure, Destination destination) {
-        if (flightMap.get(departure) == null) {
-            flightMap.put(departure, new ArrayList<>());
+    public void addFlightToRepository(Flight flight, FlightAttributes flightAttributes) {
+        if (flightMap.get(flight) == null) {
+            flightMap.put(flight, new ArrayList<>());
         }
-        final List<Destination> destinations = flightMap.get(departure);
-        destinations.add(destination);
+        final List<FlightAttributes> theFlightAttributes = flightMap.get(flight);
+        theFlightAttributes.add(flightAttributes);
 
     }
 
+    public Stream<Flight> getFlights() {
+        Stream<Flight> flightStream = flightMap.entrySet().stream()
+                .map(s -> s.getKey());
+        return flightStream;
+    }
+
+    public Stream<Map.Entry<Flight, List<FlightAttributes>>> getFlightsWithAttributesStream() {
+        Stream<Map.Entry<Flight, List<FlightAttributes>>> flightsWithAttributes = flightMap.entrySet().stream();
+        return flightsWithAttributes;
+    }
+
+    public boolean isFlightPossible(Flight flight) {
+        boolean ifFlightIsPossible = flightMap.containsKey(flight);
+        return ifFlightIsPossible;
+
+    }
 
 }
