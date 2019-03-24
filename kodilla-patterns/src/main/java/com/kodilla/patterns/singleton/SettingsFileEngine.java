@@ -2,8 +2,20 @@ package com.kodilla.patterns.singleton;
 
 public final class SettingsFileEngine {
     private String fileName = "";
+    private static SettingsFileEngine settingsFileEngineInstance = null;
 
-    public SettingsFileEngine() {
+    private SettingsFileEngine() {
+    }
+
+    public static SettingsFileEngine getInstance() {
+        if (settingsFileEngineInstance == null) {
+            synchronized(SettingsFileEngine.class) {
+                if (settingsFileEngineInstance == null) {
+                    settingsFileEngineInstance = new SettingsFileEngine();
+                }
+            }
+        }
+        return settingsFileEngineInstance;
     }
 
     public String getFileName() {
