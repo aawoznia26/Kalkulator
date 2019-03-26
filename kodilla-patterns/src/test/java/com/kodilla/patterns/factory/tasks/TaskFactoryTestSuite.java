@@ -10,7 +10,8 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory taskFactory = new TaskFactory();
         //When
-        boolean ifExecuted = taskFactory.executeTask(KindOfTask.PAINTING);
+        Task task = taskFactory.executeTask(KindOfTask.PAINTING);
+        boolean ifExecuted = task.executeTask();
 
         //Then
         Assert.assertTrue(ifExecuted);
@@ -21,7 +22,8 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory taskFactory = new TaskFactory();
         //When
-        boolean ifExecuted = taskFactory.executeTask(KindOfTask.SHOPPING);
+        Task task = taskFactory.executeTask(KindOfTask.SHOPPING);
+        boolean ifExecuted = task.executeTask();
 
         //Then
         Assert.assertTrue(ifExecuted);
@@ -32,7 +34,8 @@ public class TaskFactoryTestSuite {
         //Given
         TaskFactory taskFactory = new TaskFactory();
         //When
-        boolean ifExecuted = taskFactory.executeTask(KindOfTask.DRIVING);
+        Task task = taskFactory.executeTask(KindOfTask.DRIVING);
+        boolean ifExecuted = task.executeTask();
 
         //Then
         Assert.assertTrue(ifExecuted);

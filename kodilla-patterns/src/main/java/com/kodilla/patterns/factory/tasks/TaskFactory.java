@@ -2,22 +2,21 @@ package com.kodilla.patterns.factory.tasks;
 
 public final class TaskFactory {
 
-    public boolean executeTask(KindOfTask kindOfTask){
-        Task task = null;
+    public Task executeTask(KindOfTask kindOfTask){
 
         switch (kindOfTask) {
             case SHOPPING:
-                task = new ShoppingTask("Shopping on Saturday", "eggs", 8);
-                break;
+                return new ShoppingTask("Shopping on Saturday", "eggs", 8);
 
             case PAINTING:
-                task = new PaintingTask("Furniture painting", "blue", "commode");
-                break;
+                return new PaintingTask("Furniture painting", "blue", "commode");
 
             case DRIVING:
-                task = new DrivingTask("Weekend trip", "Viena", "car");
-                break;
+                return new DrivingTask("Weekend trip", "Viena", "car");
+
+            default:
+                return null;
         }
-        return task.executeTask();
+
     }
 }
