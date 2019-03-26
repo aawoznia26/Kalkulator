@@ -12,8 +12,8 @@ public class BigmacTestSuite {
         Bigmac bigmac = new Bigmac.BurgerBuilder()
                 .ingredient(Ingredients.JALAPENO)
                 .sauce(Sauce.CLASSIC)
+                .bun(Bun.SESAME)
                 .burgers(2)
-                .bun(Bun.NORMAL)
                 .ingredient(Ingredients.ONION)
                 .ingredient(Ingredients.PICKLE)
                 .build();

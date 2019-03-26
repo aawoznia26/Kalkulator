@@ -44,7 +44,12 @@ public class Bigmac {
         }
 
         public Bigmac build() {
-            return new Bigmac (bun, burgers, sauce, ingrediens);
+            if(bun != null && burgers>=1) {
+                return new Bigmac (bun, burgers, sauce, ingrediens);
+            } else {
+                throw new IllegalStateException("Your Big Mac composition should contain bun and at least 1 burger");
+            }
+
         }
     }
 
