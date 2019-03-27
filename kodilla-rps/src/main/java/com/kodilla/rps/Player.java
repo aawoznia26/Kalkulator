@@ -24,7 +24,7 @@ public class Player {
     public Move getMove() throws java.lang.Exception {
 
         Move move = null;
-        List<Integer> availableResults = new ArrayList(Arrays.asList(0,1,2));
+        List<Integer> availableResults = new ArrayList(Arrays.asList(Move.values()));
 
         while (!availableResults.contains(move)) {
 
@@ -38,8 +38,8 @@ public class Player {
 
             } catch(ArrayIndexOutOfBoundsException e) {
                 System.out.println("Ten ruch jest niedozwolony! Spróbuj ponownie.");
-
             }
+
         }
         return move;
 
