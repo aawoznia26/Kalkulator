@@ -23,6 +23,11 @@ public class Bigmac {
         private Sauce sauce;
         private List<Ingredients> ingrediens = new ArrayList<>();
 
+        public BurgerBuilder(Bun bun, int burgers) {
+            this.bun = bun;
+            this.burgers = burgers;
+        }
+
         public BurgerBuilder bun(Bun bun) {
             this.bun = bun;
             return this;
@@ -44,11 +49,7 @@ public class Bigmac {
         }
 
         public Bigmac build() {
-            if(bun != null && burgers>=1) {
                 return new Bigmac (bun, burgers, sauce, ingrediens);
-            } else {
-                throw new IllegalStateException("Your Big Mac composition should contain bun and at least 1 burger");
-            }
 
         }
     }
