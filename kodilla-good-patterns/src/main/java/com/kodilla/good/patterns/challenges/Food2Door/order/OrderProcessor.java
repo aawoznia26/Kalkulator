@@ -1,41 +1,33 @@
 package com.kodilla.good.patterns.challenges.Food2Door.order;
 
 import com.kodilla.good.patterns.challenges.Food2Door.Product;
-import com.kodilla.good.patterns.challenges.Food2Door.informationservice.InformationService;
-import com.kodilla.good.patterns.challenges.Food2Door.orderrepository.InMemoryOrderRepository;
-import com.kodilla.good.patterns.challenges.Food2Door.supply.*;
-import com.kodilla.good.patterns.challenges.Food2Door.User;
+import com.kodilla.good.patterns.challenges.Food2Door.supply.OrderSupplier;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class OrderProcessor {
 
+    private Map<Integer, OrderSupplier> suppliersMap;
 
-    public boolean processOrder(Order order, User user) {
-
-        boolean result = order.getOrderedProduct().entrySet().stream()
-                .allMatch(entry -> orderFromSupplier(entry.getKey().getSupplierId(), entry.getKey(), entry.getValue()));
-        return result;
+    public OrderProcessor(List<OrderSupplier> suppliers) {
+        suppliersMap = suppliers.stream().collect(Collectors.toMap(OrderSupplier::getId, Function.identity()));
     }
 
-    public boolean orderFromSupplier(int supplierId, Product product, int quantity) {
+    public boolean processOrder(Order order) {
+        return order.getOrderedProduct().entrySet().stream()
+                .allMatch(entry -> orderFromSupplier(entry.getKey(), entry.getValue()));
+    }
 
-        boolean orderFromSupplier = false;
-
-        switch (supplierId) {
-            case 12:
-                OrderFromSupplier orderFromExtraFoodShop = new OrderFromExtraFoodShop();
-                orderFromSupplier = orderFromExtraFoodShop.process(product, quantity);
-                break;
-            case 142:
-                OrderFromGlutenFreeShop orderFromGlutenFreeShop = new OrderFromGlutenFreeShop();
-                orderFromSupplier = orderFromGlutenFreeShop.process(product, quantity);
-                break;
-            case 76:
-                OrderFromHealthyShop orderFromHealthyShop = new OrderFromHealthyShop();
-                orderFromSupplier = orderFromHealthyShop.process(product, quantity);
-                break;
+    public boolean orderFromSupplier(Product product, int quantity) {
+        final OrderSupplier orderSupplier = suppliersMap.get(product.getSupplierId());
+        if (orderSupplier != null) {
+            return orderSupplier.process(product, quantity);
+        } else {
+            return false;
         }
-
-        return orderFromSupplier;
     }
 
 }

@@ -7,7 +7,10 @@ import com.kodilla.good.patterns.challenges.Food2Door.order.Order;
 import com.kodilla.good.patterns.challenges.Food2Door.order.OrderCreator;
 import com.kodilla.good.patterns.challenges.Food2Door.order.OrderProcessor;
 import com.kodilla.good.patterns.challenges.Food2Door.orderrepository.InMemoryOrderRepository;
+import com.kodilla.good.patterns.challenges.Food2Door.supply.OrderFromExtraFoodShop;
+import com.kodilla.good.patterns.challenges.Food2Door.supply.OrderFromGlutenFreeShop;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,8 +31,15 @@ public class Food2DoorApp {
         OrderCreator orderCreator = new OrderCreator(inMemoryOrderRepository);
         Order order = orderCreator.createOrder(orderedProduct, promotion, delivery);
 
-        OrderProcessor orderProcessor = new OrderProcessor();
-        boolean result = orderProcessor.processOrder(order, user);
+        OrderProcessor orderProcessor = new OrderProcessor(
+                Arrays.asList(
+                        new OrderFromExtraFoodShop(),
+                        new OrderFromGlutenFreeShop(),
+                        new OrderFromGlutenFreeShop()
+                )
+        );
+
+        boolean result = orderProcessor.processOrder(order);
 
         inMemoryOrderRepository.addOrderToRepository(order, user);
 
