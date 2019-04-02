@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class SampleOrderFactory {
 
-    public OrderRequest newOrderRequest() {
+    public static OrderRequest newOrderRequest() {
         User user = new User("Magda", "Kurowicka 67, 03-284 Gdańsk", "Kurowicka 67, 03-284 Gdańsk",
                 "magdackaoed@gmail.com", "627-378-337");
         Map<Product, Integer> orderedProduct = new HashMap<>();
