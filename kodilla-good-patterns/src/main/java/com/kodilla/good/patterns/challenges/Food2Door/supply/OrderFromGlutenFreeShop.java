@@ -2,7 +2,12 @@ package com.kodilla.good.patterns.challenges.Food2Door.supply;
 
 import com.kodilla.good.patterns.challenges.Food2Door.Product;
 
-public class OrderFromGlutenFreeShop implements OrderFromSupplier {
+public class OrderFromGlutenFreeShop implements OrderSupplier {
+
+    @Override
+    public int getId() {
+        return 142;
+    }
 
     public boolean process(Product product, int quantity) {
         int productId = product.getProductId();
