@@ -25,4 +25,14 @@ public class Product {
     public int getSupplierId() {
         return supplierId;
     }
+
+    @Override
+    public String toString() {
+        return "Produkt {" +
+                "ID=" + productId +
+                ", nazwa='" + productName + '\'' +
+                ", cena=" + price +
+                ", Id dostawcy =" + supplierId +
+                '}';
+    }
 }

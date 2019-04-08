@@ -1,6 +1,7 @@
 package com.kodilla.good.patterns.challenges.Food2Door.order;
 
 import com.kodilla.good.patterns.challenges.Food2Door.Product;
+import com.kodilla.good.patterns.challenges.Food2Door.ProductOrderResult;
 import com.kodilla.good.patterns.challenges.Food2Door.orderrepository.InMemoryOrderRepository;
 
 import java.time.Instant;
@@ -14,12 +15,12 @@ public class OrderCreator {
         this.inMemoryOrderRepository = inMemoryOrderRepository;
     }
 
-    public Order createOrder(Map<Product, Integer> orderedProduct, double promotion, Delivery delivery) {
+    public Order createOrder(Map<Product, ProductOrderResult> orderedProduct, double promotion, Delivery delivery) {
         int orderId = inMemoryOrderRepository.assignOrderId();
         Instant orderDateAndTime = Instant.now();
         double finalPrice = 0;
-        for (Map.Entry<Product, Integer> entry : orderedProduct.entrySet()) {
-            finalPrice += entry.getKey().getPrice() * entry.getValue();
+        for (Map.Entry<Product, ProductOrderResult> entry : orderedProduct.entrySet()) {
+            finalPrice += entry.getKey().getPrice() * entry.getValue().getPieces();
         }
 
         if (finalPrice - promotion < 0) {
