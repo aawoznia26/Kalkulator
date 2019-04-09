@@ -2,7 +2,6 @@ package com.kodilla.hibernate.tasklist.dao;
 
 
 import com.kodilla.hibernate.tasklist.TaskList;
-import org.hibernate.validator.internal.util.stereotypes.ThreadSafe;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
