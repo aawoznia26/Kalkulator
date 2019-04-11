@@ -166,10 +166,9 @@ public class SudokuGame {
             backtrackQueue.push(new Backtrack(sudokuBoard.deepCopy(), position, option));
             setBoardElement(row, column, option);
 
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        } catch (IndexOutOfBoundsException f) {
-            System.out.println(f);
+        } catch (Exception e) {
+            System.out.println(row + " " + column);
+            e.printStackTrace();
         }
     }
 
