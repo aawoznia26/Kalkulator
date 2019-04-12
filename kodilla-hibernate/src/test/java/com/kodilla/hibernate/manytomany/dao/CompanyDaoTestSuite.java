@@ -21,7 +21,7 @@ public class CompanyDaoTestSuite {
     EmployeeDao employeeDao;
 
     @Test
-    public void testSaveManyToMany(){
+    public void testSaveManyToMany() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -60,7 +60,7 @@ public class CompanyDaoTestSuite {
         try {
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
-           companyDao.deleteById(greyMatterId);
+            companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
         }
@@ -93,6 +93,10 @@ public class CompanyDaoTestSuite {
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
+        int softwareMachineId = softwareMachine.getId();
+        int dataMaestersId = dataMaesters.getId();
+        int greyMatterId = greyMatter.getId();
+
 
         //When
         List<Employee> employeeSearchBySurname = employeeDao.retrieveEmployeesWithCertainSurname("Smith");
@@ -100,12 +104,17 @@ public class CompanyDaoTestSuite {
 
 
         //Then
-        try {
-            Assert.assertEquals(2, employeeSearchBySurname.size());
-            Assert.assertEquals(1, companySearchByPrefix.size());
+        Assert.assertEquals(2, employeeSearchBySurname.size());
+        Assert.assertEquals(1, companySearchByPrefix.size());
 
-        } finally {
-            //CleanUp
+        //CleanUp
+        try {
+        companyDao.deleteById(softwareMachineId);
+        companyDao.deleteById(dataMaestersId);
+        companyDao.deleteById(greyMatterId);
+        } catch (Exception e) {
+            System.out.println(e);
+            //do nothing
         }
     }
 }

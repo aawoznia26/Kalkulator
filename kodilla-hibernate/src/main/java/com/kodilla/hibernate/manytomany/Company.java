@@ -39,7 +39,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies", fetch = FetchType.EAGER)
     public List<Employee> getEmployees() {
         return employees;
     }
