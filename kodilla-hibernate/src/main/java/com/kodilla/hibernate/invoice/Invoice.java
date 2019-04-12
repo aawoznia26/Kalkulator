@@ -28,12 +28,14 @@ public class Invoice {
     public int getId() {
         return id;
     }
+
+
     @Column(name = "NUMBER")
     public String getNumber() {
         return number;
     }
 
-    @OneToMany(targetEntity = Item.class, mappedBy = "invoice", cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Item.class, mappedBy = "invoice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Item> getItems() {
         return items;
     }

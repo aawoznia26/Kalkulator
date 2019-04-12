@@ -11,6 +11,7 @@ public class Item {
     private int id;
     private BigDecimal price;
     private int quantity ;
+    private Product product;
     private BigDecimal value;
     private Invoice invoice;
 
@@ -30,9 +31,6 @@ public class Item {
     public int getId() {
         return id;
     }
-
-    //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //@JoinColumn(name = "PRODUCT_ID")
 
     @Column(name = "PRICE")
     public BigDecimal getPrice() {
@@ -55,6 +53,16 @@ public class Item {
         return invoice;
     }
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "PRODUCT_ID")
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public void setInvoice(Invoice invoice) {
         this.invoice = invoice;
     }
@@ -62,7 +70,6 @@ public class Item {
     private void setPrice(BigDecimal price) {
         this.price = price;
     }
-
 
     private void setId(int id) {
         this.id = id;
