@@ -1,41 +1,32 @@
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 public class SudokuApp {
 
     public static void main(String[] args) throws java.lang.Exception {
-        System.out.println("What size of board do you want to play 4, 9, 16 or 25?");
-        Scanner scannerBoardSize = new Scanner(System.in);
-        int scannedBoardSize = scannerBoardSize.nextInt();
-        BoardSize boardSize = null;
-        switch (scannedBoardSize){
-            case 4:
-                boardSize = BoardSize.FOUR;
-                break;
-            case 9:
-                boardSize = BoardSize.NINE;
-                break;
-            case 16:
-                boardSize = BoardSize.SIXTEEN;
-                break;
-            case 25:
-                boardSize = BoardSize.DWENTY_FIVE;
-                break;
-
-        }
-        SudokuGame theGame = new SudokuGame(boardSize.getBoardSize());
-
         String resloveSudokuCommand = "SUDOKU";
+        SudokuGame theGame = new SudokuGame(0);
+
+        while (theGame.getBoardSize() == 0) {
+            try {
+                System.out.println("What size of board do you want to play - 4, 9 or 16?");
+                Scanner scannerBoardSize = new Scanner(System.in);
+                int scannedBoardSize = scannerBoardSize.nextInt();
+                theGame = new SudokuGame(scannedBoardSize);
+
+            } catch (InputMismatchException e) {
+                System.out.println("You can enter only integers lover or equal to 16");
+            }
+        }
+
+
         theGame.createEmptyBoard();
 
         boolean ok = false;
+
         while (!ok) {
             try {
                 Scanner scanner1 = new Scanner(System.in);
                 System.out.println("Enter row number, column number and value separated by ',' or enter 'SUDOKU' if you want to see resolved board");
-                theGame.setBoardElement(0, 1, 3);
-                theGame.setBoardElement(0, 2, 2);
 
                 String scannedString = scanner1.nextLine().replaceAll(",", " ");
                 Scanner scanner2 = new Scanner(scannedString);
@@ -50,6 +41,7 @@ public class SudokuApp {
                     int value = scanner2.nextInt();
 
                     theGame.setBoardElement(rowNumber - 1, columnNumber - 1, value);
+                    System.out.print(theGame.getSudokuBoard());
                 }
 
 

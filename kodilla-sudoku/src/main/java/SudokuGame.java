@@ -1,5 +1,7 @@
 import java.util.*;
 
+import static java.lang.Math.sqrt;
+
 public class SudokuGame {
 
     private int boardSize;
@@ -7,11 +9,30 @@ public class SudokuGame {
     private Deque<Backtrack> backtrackQueue = new ArrayDeque<>();
 
     public SudokuGame(int boardSize) {
-        this.boardSize = boardSize;
+        if((double)sqrt(boardSize)==(int)sqrt(boardSize) && boardSize <=16){
+            this.boardSize = boardSize;
+
+        } else {
+            System.out.println("The number cannot be sudoku board size. Try again.");
+        }
+
+    }
+
+    public SudokuBoard getSudokuBoard() {
+        return sudokuBoard;
     }
 
     public int getBoardSize() {
         return boardSize;
+    }
+
+    public boolean ifPossibleToBeSudokuBoardSize(int size) {
+
+        if((double)sqrt(size)==(int)sqrt(size) && size <=36){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public SudokuBoard createEmptyBoard() {

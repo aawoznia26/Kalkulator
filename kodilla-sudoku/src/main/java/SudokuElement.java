@@ -23,7 +23,7 @@ public class SudokuElement {
     @Override
     public String toString() {
 
-        if (value <= 9) {
+        if (value <= 9 && value > 0) {
             return "0" + String.valueOf(value);
         }
         return String.valueOf(value);
