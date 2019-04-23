@@ -1,10 +1,10 @@
 public class Backtrack {
 
     private SudokuBoard sudokuBoard;
-    private int[][] position;
+    private Position position;
     private int option;
 
-    public Backtrack(SudokuBoard sudokuBoard, int[][] position, int option) {
+    public Backtrack(SudokuBoard sudokuBoard, Position position, int option) {
         this.sudokuBoard = sudokuBoard;
         this.position = position;
         this.option = option;
@@ -14,7 +14,7 @@ public class Backtrack {
         return sudokuBoard;
     }
 
-    public int[][] getPosition() {
+    public Position getPosition() {
         return position;
     }
 

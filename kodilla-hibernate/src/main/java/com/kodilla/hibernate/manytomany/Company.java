@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
-    private int id;
+    private Integer id;
     private String name;
     private List<Employee> employees = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class Company {
     @GeneratedValue
     @NotNull
     @Column(name = "COMPANY_ID", unique = true)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -39,7 +39,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies", fetch = FetchType.EAGER)
+    @ManyToMany( mappedBy = "companies", fetch = FetchType.EAGER)
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -48,7 +48,7 @@ public class Company {
         this.employees = employees;
     }
 
-    private void setId(int id) {
+    private void setId(Integer id) {
         this.id = id;
     }
 

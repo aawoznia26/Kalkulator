@@ -22,8 +22,11 @@ public class SudokuElement {
 
     @Override
     public String toString() {
-        String valueConvertedToString = Character.toString((char) (value + '0'));
-        return valueConvertedToString;
+
+        if (value <= 9) {
+            return "0" + String.valueOf(value);
+        }
+        return String.valueOf(value);
     }
 
 

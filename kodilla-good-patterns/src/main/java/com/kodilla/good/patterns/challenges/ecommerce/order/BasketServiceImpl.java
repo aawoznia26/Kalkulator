@@ -2,26 +2,18 @@ package com.kodilla.good.patterns.challenges.ecommerce.order;
 
 
 import com.kodilla.good.patterns.challenges.ecommerce.Product;
-import com.kodilla.good.patterns.challenges.ecommerce.User;
-import com.kodilla.good.patterns.challenges.ecommerce.orderrepository.InMemoryOrderRepository;
-
 import java.time.Instant;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class OrderBuilder {
+public class BasketServiceImpl implements BasketService{
 
-    private InMemoryOrderRepository inMemoryOrderRepository;
-
-    public OrderBuilder(InMemoryOrderRepository inMemoryOrderRepository) {
-        this.inMemoryOrderRepository = inMemoryOrderRepository;
-    }
+    private AtomicInteger basketIdGenerator = new AtomicInteger();
 
     public Basket buildBasket(OrderRequest orderRequest) {
-        int basketId = inMemoryOrderRepository.assignOrderId();
         Map<Product, Integer> orderedProduct = orderRequest.getOrderedProduct();
         double promotion = orderRequest.getPromotion();
         Delivery delivery = orderRequest.getDelivery();
-        User user = orderRequest.getUser();
         Instant orderDateAndTime = orderRequest.getOrderDateAndTime();
         double finalPrice = 0;
         for (Map.Entry<Product, Integer> entry : orderedProduct.entrySet()) {
@@ -34,7 +26,7 @@ public class OrderBuilder {
             finalPrice = finalPrice - promotion;
         }
 
-        Basket basket = new Basket(basketId, orderedProduct, orderDateAndTime, finalPrice, promotion, delivery);
+        Basket basket = new Basket(basketIdGenerator.incrementAndGet(), orderedProduct, orderDateAndTime, finalPrice, promotion, delivery);
         return basket;
     }
 }

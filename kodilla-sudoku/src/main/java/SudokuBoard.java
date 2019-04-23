@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.sqrt;
+
 public class SudokuBoard extends Prototype {
 
     private List<SudokuRow> board = new ArrayList<>();
@@ -13,13 +15,15 @@ public class SudokuBoard extends Prototype {
         return board;
     }
 
+    public SudokuRow getRow(int rowNumber) {
+        return board.get(rowNumber);
+    }
+
+
     public void addRow(SudokuRow sudokuRow) {
         board.add(sudokuRow);
     }
 
-    public SudokuRow getRow(int rowNumber) {
-        return board.get(rowNumber);
-    }
 
     @Override
     public String toString() {
@@ -48,18 +52,21 @@ public class SudokuBoard extends Prototype {
     }
 
     public boolean isInBlock(int row, int column, int value) {
-        int r = row - row % 3;
-        int c = column - column % 3;
+
+        int sqrt = (int)sqrt((double)board.size());
+
+        int r = row - row % sqrt;
+        int c = column - column % sqrt;
 
         SudokuBoard rowsList = new SudokuBoard();
         List<Integer> result = new ArrayList<>();
 
-        rowsList.addRow(board.get(r));
-        rowsList.addRow(board.get(r + 1));
-        rowsList.addRow(board.get(r + 2));
+        for(int s = 0; s < sqrt; s++) {
+            rowsList.addRow(board.get(r + s));
+        }
 
         for (SudokuRow theRow : rowsList.getBoard()) {
-            for (int i = c; i < c + 3; i++) {
+            for (int i = c; i < c + sqrt; i++) {
                 int elementValue = theRow.getElement(i).getValue();
                 if (elementValue == value) {
                     result.add(elementValue);
@@ -75,8 +82,8 @@ public class SudokuBoard extends Prototype {
 
         List<SudokuElement> elementsInRow = getBoard().get(row).getRow();
         for (SudokuElement sudokuElement : elementsInRow) {
-            List<Integer> fulfillmentOptions = sudokuElement.getFulfillmentOptions();
-            fulfillmentOptions.removeIf(o -> o == value);
+            List<Integer> thisfFulfillmentOptions = sudokuElement.getFulfillmentOptions();
+            thisfFulfillmentOptions.removeIf(o -> o == value);
         }
     }
 
@@ -90,16 +97,19 @@ public class SudokuBoard extends Prototype {
 
     public void removeValueFromOptionsInBox(int row, int column, int value) {
 
-        int r = row - row % 3;
-        int c = column - column % 3;
+        int sqrt = (int)sqrt((double)board.size());
+
+        int r = row - row % sqrt;
+        int c = column - column % sqrt;
 
         SudokuBoard rowsList = new SudokuBoard();
-        rowsList.addRow(getBoard().get(r));
-        rowsList.addRow(getBoard().get(r + 1));
-        rowsList.addRow(getBoard().get(r + 2));
+
+        for(int s = 0; s < sqrt; s++) {
+            rowsList.addRow(board.get(r + s));
+        }
 
         for (SudokuRow theRow : rowsList.getBoard()) {
-            for (int i = c; i < c + 3; i++) {
+            for (int i = c; i < c + sqrt; i++) {
                 rowsList.removeValueFromOptionsInColumn(i, value);
             }
         }
@@ -123,18 +133,21 @@ public class SudokuBoard extends Prototype {
 
 
     public boolean isInBlockOptions(int row, int column, int value) {
-        int r = row - row % 3;
-        int c = column - column % 3;
+
+        int sqrt = (int)sqrt((double)board.size());
+
+        int r = row - row % sqrt;
+        int c = column - column % sqrt;
 
         SudokuBoard rowsList = new SudokuBoard();
         List<Integer> result = new ArrayList<>();
 
-        rowsList.addRow(board.get(r));
-        rowsList.addRow(board.get(r + 1));
-        rowsList.addRow(board.get(r + 2));
+        for(int s = 0; s < sqrt; s++) {
+            rowsList.addRow(board.get(r + s));
+        }
 
         for (SudokuRow theRow : rowsList.getBoard()) {
-            for (int i = c; i < c + 3; i++) {
+            for (int i = c; i < c + sqrt; i++) {
                 theRow.getElement(i).getFulfillmentOptions().stream().forEach(option -> {
                             if (option == value) {
                                 result.add(option);
@@ -149,8 +162,7 @@ public class SudokuBoard extends Prototype {
 
     public SudokuBoard deepCopy() throws CloneNotSupportedException {
 
-        SudokuBoard clonedBoard = (SudokuBoard) super.clone();
-        clonedBoard.board = new ArrayList<>();
+        SudokuBoard clonedBoard = new SudokuBoard();
         for (SudokuRow theRow : board) {
             List<SudokuElement> clonedElementList = new ArrayList<>();
             SudokuRow clonedRow = new SudokuRow(clonedElementList);

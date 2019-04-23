@@ -15,10 +15,5 @@ public class InMemoryOrderRepository implements OrderRepository {
 
     }
 
-    public int assignOrderId() {
-        int lastOrderId = 0;
-        if (inMemoryOrderRepository.size() > 0) lastOrderId = inMemoryOrderRepository.lastKey().getBasketId();
-        return lastOrderId + 1;
-    }
 }
 

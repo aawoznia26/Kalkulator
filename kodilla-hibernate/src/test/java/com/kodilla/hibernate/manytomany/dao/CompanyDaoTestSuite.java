@@ -77,6 +77,10 @@ public class CompanyDaoTestSuite {
         Company dataMaesters = new Company("Data Maesters");
         Company greyMatter = new Company("Grey Matter");
 
+        employeeDao.save(johnSmith);
+        employeeDao.save(stephanieClarckson);
+        employeeDao.save(lindaSmith);
+
         softwareMachine.getEmployees().add(johnSmith);
         dataMaesters.getEmployees().add(stephanieClarckson);
         dataMaesters.getEmployees().add(lindaSmith);
@@ -93,9 +97,9 @@ public class CompanyDaoTestSuite {
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
 
-        int softwareMachineId = softwareMachine.getId();
-        int dataMaestersId = dataMaesters.getId();
-        int greyMatterId = greyMatter.getId();
+        Integer softwareMachineId = softwareMachine.getId();
+        Integer dataMaestersId = dataMaesters.getId();
+        Integer greyMatterId = greyMatter.getId();
 
 
         //When
@@ -113,7 +117,7 @@ public class CompanyDaoTestSuite {
         companyDao.deleteById(dataMaestersId);
         companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
             //do nothing
         }
     }
