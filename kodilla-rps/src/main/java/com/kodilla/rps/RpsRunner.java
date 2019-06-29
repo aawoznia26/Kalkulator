@@ -34,12 +34,12 @@ public class RpsRunner {
     public static int scanWonRounds() {
         int wonRunds = 0;
         boolean ok = false;
-        while(!ok){
+        while (!ok) {
             try {
                 Scanner scanner = new Scanner(System.in);
                 wonRunds = scanner.nextInt();
                 ok = true;
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Wprowadź liczbę całkowitą");
             }
         }

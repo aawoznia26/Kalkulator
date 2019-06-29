@@ -34,20 +34,20 @@ public class CalculateStatistics implements Statistics {
         return 0;
     }
 
-    public void calculateAdvStatistics(Statistics statistics){
+    public void calculateAdvStatistics(Statistics statistics) {
         this.usersCount = statistics.usersNames().size();
         this.postsCount = statistics.postsCount();
         this.commentsCount = statistics.commentsCount();
 
-        this.postsPerUser = postsCount/usersCount;
-        this.commentsPerUser = commentsCount/usersCount;
-        this.commentsPerPost = commentsCount/postsCount;
+        this.postsPerUser = postsCount / usersCount;
+        this.commentsPerUser = commentsCount / usersCount;
+        this.commentsPerPost = commentsCount / postsCount;
 
 
     }
 
-    public double[] showStatistics(){
-        double[] statisticsToDisplay= {usersCount, postsCount, commentsCount, postsPerUser, commentsPerUser,commentsPerPost};
+    public double[] showStatistics() {
+        double[] statisticsToDisplay = {usersCount, postsCount, commentsCount, postsPerUser, commentsPerUser, commentsPerPost};
         return statisticsToDisplay;
     }
 

@@ -2,7 +2,7 @@ package com.kodilla.patterns.factory.tasks;
 
 public final class TaskFactory {
 
-    public Task executeTask(KindOfTask kindOfTask){
+    public Task executeTask(KindOfTask kindOfTask) {
 
         switch (kindOfTask) {
             case SHOPPING:

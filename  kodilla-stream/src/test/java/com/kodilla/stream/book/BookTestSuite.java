@@ -2,6 +2,7 @@ package com.kodilla.stream.book;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -16,7 +17,7 @@ public class BookTestSuite {
 
         //Then
         int numberOfBooksPublicatedAfter2007 = 0;
-        for(Book book : books) {
+        for (Book book : books) {
             if (book.getYearOfPublication() > 2007) {
                 numberOfBooksPublicatedAfter2007++;
             }

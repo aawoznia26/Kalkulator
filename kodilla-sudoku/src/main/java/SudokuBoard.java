@@ -53,7 +53,7 @@ public class SudokuBoard extends Prototype {
 
     public boolean isInBlock(int row, int column, int value) {
 
-        int sqrt = (int)sqrt((double)board.size());
+        int sqrt = (int) sqrt((double) board.size());
 
         int r = row - row % sqrt;
         int c = column - column % sqrt;
@@ -61,7 +61,7 @@ public class SudokuBoard extends Prototype {
         SudokuBoard rowsList = new SudokuBoard();
         List<Integer> result = new ArrayList<>();
 
-        for(int s = 0; s < sqrt; s++) {
+        for (int s = 0; s < sqrt; s++) {
             rowsList.addRow(board.get(r + s));
         }
 
@@ -97,14 +97,14 @@ public class SudokuBoard extends Prototype {
 
     public void removeValueFromOptionsInBox(int row, int column, int value) {
 
-        int sqrt = (int)sqrt((double)board.size());
+        int sqrt = (int) sqrt((double) board.size());
 
         int r = row - row % sqrt;
         int c = column - column % sqrt;
 
         SudokuBoard rowsList = new SudokuBoard();
 
-        for(int s = 0; s < sqrt; s++) {
+        for (int s = 0; s < sqrt; s++) {
             rowsList.addRow(board.get(r + s));
         }
 
@@ -134,7 +134,7 @@ public class SudokuBoard extends Prototype {
 
     public boolean isInBlockOptions(int row, int column, int value) {
 
-        int sqrt = (int)sqrt((double)board.size());
+        int sqrt = (int) sqrt((double) board.size());
 
         int r = row - row % sqrt;
         int c = column - column % sqrt;
@@ -142,7 +142,7 @@ public class SudokuBoard extends Prototype {
         SudokuBoard rowsList = new SudokuBoard();
         List<Integer> result = new ArrayList<>();
 
-        for(int s = 0; s < sqrt; s++) {
+        for (int s = 0; s < sqrt; s++) {
             rowsList.addRow(board.get(r + s));
         }
 

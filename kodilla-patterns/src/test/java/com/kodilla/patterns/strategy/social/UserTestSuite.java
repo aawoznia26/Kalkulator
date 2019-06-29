@@ -29,7 +29,7 @@ public class UserTestSuite {
         User millenials = new Millenials("Piotrek");
         //When
         String millenialsDefaultPublisher = millenials.sharePost();
-        millenials.setSocialPublisher(new SnapchatPublisher ());
+        millenials.setSocialPublisher(new SnapchatPublisher());
         String millenialsSetPublisher = millenials.sharePost();
         //Then
         Assert.assertEquals("Facebook", millenialsDefaultPublisher);

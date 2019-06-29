@@ -36,7 +36,7 @@ public class BookDirectoryTestSuite {
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
-        for(int n = 1; n <= booksQuantity; n++){
+        for (int n = 1; n <= booksQuantity; n++) {
             Book theBook = new Book("Title " + n, "Author " + n, 1970 + n);
             resultList.add(theBook);
         }
@@ -103,7 +103,7 @@ public class BookDirectoryTestSuite {
         Book book5 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 1987);
 
         List<Book> user1List = new ArrayList<>(Arrays.asList(book1));
-        List<Book> user2List = new ArrayList<>(Arrays.asList(book2, book3, book4,book5));
+        List<Book> user2List = new ArrayList<>(Arrays.asList(book2, book3, book4, book5));
 
 
         booksInHandsOf.put(user1, user1List);
@@ -139,7 +139,7 @@ public class BookDirectoryTestSuite {
         Book book5 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 1987);
 
         List<Book> user1List = new ArrayList<>(Arrays.asList());
-        List<Book> user2List = new ArrayList<>(Arrays.asList(book1, book2, book3, book4,book5));
+        List<Book> user2List = new ArrayList<>(Arrays.asList(book1, book2, book3, book4, book5));
 
 
         booksInHandsOf.put(user1, user1List);
@@ -176,7 +176,7 @@ public class BookDirectoryTestSuite {
         Book book5 = new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 1987);
 
         List<Book> user1List = new ArrayList<>(Arrays.asList());
-        List<Book> user2List = new ArrayList<>(Arrays.asList(book1, book2, book3, book4,book5));
+        List<Book> user2List = new ArrayList<>(Arrays.asList(book1, book2, book3, book4, book5));
 
 
         booksInHandsOf.put(user1, user1List);

@@ -5,13 +5,14 @@ import java.util.Set;
 
 public final class Continent {
     private final String name;
-    private final Set<Country> countrySet= new HashSet<>();
+    private final Set<Country> countrySet = new HashSet<>();
 
     public Continent(final String name) {
         this.name = name;
 
     }
-    public Set<Country> getCountrys(){
+
+    public Set<Country> getCountrys() {
         return countrySet;
     }
 
@@ -30,7 +31,7 @@ public final class Continent {
         return name.hashCode();
     }
 
-    public void addCountry(Country country){
+    public void addCountry(Country country) {
         countrySet.add(country);
     }
 }

@@ -20,9 +20,9 @@ public class FlightFinder {
             System.out.println("Wylot niemożliwy");
             return false;
         }
-        isArrivalPossible=checkArrival(flightMap, searchArrivalAirport);
+        isArrivalPossible = checkArrival(flightMap, searchArrivalAirport);
 
-        if (isDeparturePossible && isArrivalPossible ) {
+        if (isDeparturePossible && isArrivalPossible) {
             boolean isDirectFlightPossible = flightMap.get(searchDepartureAirport).contains(searchArrivalAirport);
             if (isDirectFlightPossible) {
                 return true;
@@ -41,21 +41,20 @@ public class FlightFinder {
     }
 
 
-    public boolean checkArrival (Map<String, List<String>> flightMap,String searchArrivalAirport){
+    public boolean checkArrival(Map<String, List<String>> flightMap, String searchArrivalAirport) {
 
         List<String> result = flightMap.entrySet().stream()
                 .flatMap(x -> x.getValue().stream())
                 .filter(a -> a.equals(searchArrivalAirport))
                 .collect(toList());
-        if(result.size()>0) {
+        if (result.size() > 0) {
             return true;
         }
         return false;
     }
 
 
-
-        public static void main(String args[]) throws Exception{
+    public static void main(String args[]) throws Exception {
 
         FlightFinder flightFinder = new FlightFinder();
         Flight flight1 = new Flight("Ovda", "Warszawa-Modlin");

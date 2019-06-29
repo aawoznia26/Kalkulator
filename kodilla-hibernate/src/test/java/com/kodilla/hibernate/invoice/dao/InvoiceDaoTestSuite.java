@@ -21,7 +21,7 @@ public class InvoiceDaoTestSuite {
     private InvoiceDao invoiceDao;
 
     @Test
-    public void testInvoiceDaoSave(){
+    public void testInvoiceDaoSave() {
 
         //Given
 

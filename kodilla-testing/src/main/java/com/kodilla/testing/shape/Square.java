@@ -7,7 +7,7 @@ public class Square implements Shape {
         this.lengthOfSide = lengthOfSide;
     }
 
-    public String getShapeName(){
+    public String getShapeName() {
         return "Square";
     }
 

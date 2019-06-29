@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 public class WorldTestSuite {
 
     @Test
-    public void testGetPeopleQuantity(){
+    public void testGetPeopleQuantity() {
 
         //Given
         BigDecimal peopleQuantity1 = new BigDecimal(48958159);

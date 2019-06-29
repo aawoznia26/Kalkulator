@@ -2,6 +2,7 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -140,7 +141,7 @@ public class BoardTestSuite {
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        double tasks  = project.getTasksFromTheLists(inProgressTasks).stream()
+        double tasks = project.getTasksFromTheLists(inProgressTasks).stream()
                 .map(t -> Period.between(t.getCreated(), LocalDate.now()))
                 .map(p -> p.getDays())
                 .mapToDouble(Integer::doubleValue)

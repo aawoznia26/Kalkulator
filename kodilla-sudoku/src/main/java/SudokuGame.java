@@ -9,7 +9,7 @@ public class SudokuGame {
     private Deque<Backtrack> backtrackQueue = new ArrayDeque<>();
 
     public SudokuGame(int boardSize) {
-        if((double)sqrt(boardSize)==(int)sqrt(boardSize) && boardSize <=16){
+        if ((double) sqrt(boardSize) == (int) sqrt(boardSize) && boardSize <= 16) {
             this.boardSize = boardSize;
 
         } else {
@@ -28,7 +28,7 @@ public class SudokuGame {
 
     public boolean ifPossibleToBeSudokuBoardSize(int size) {
 
-        if((double)sqrt(size)==(int)sqrt(size) && size <=36){
+        if ((double) sqrt(size) == (int) sqrt(size) && size <= 36) {
             return true;
         } else {
             return false;
@@ -39,8 +39,8 @@ public class SudokuGame {
 
         List<SudokuRow> newSudokuRows = new ArrayList<>();
         List<Integer> newFulfillmentOptions = new ArrayList<>();
-        for(int k = 0; k < boardSize; k++){
-            newFulfillmentOptions.add(k+1);
+        for (int k = 0; k < boardSize; k++) {
+            newFulfillmentOptions.add(k + 1);
         }
 
         for (int i = 0; i < boardSize; i++) {
@@ -73,10 +73,10 @@ public class SudokuGame {
 
         basicResolveSudoku();
 
-        boolean isEmpty = getEmptyElementPosition().getRowPosition()>-1;
+        boolean isEmpty = getEmptyElementPosition().getRowPosition() > -1;
 
-        while(isEmpty){
-            if(getEmptyElementPosition().getRowPosition()>-1){
+        while (isEmpty) {
+            if (getEmptyElementPosition().getRowPosition() > -1) {
                 int i = getEmptyElementPosition().getRowPosition();
                 int j = getEmptyElementPosition().getColumnPosition();
                 guessValue(i, j);
@@ -88,9 +88,9 @@ public class SudokuGame {
         return sudokuBoard;
     }
 
-    public Position getEmptyElementPosition(){
+    public Position getEmptyElementPosition() {
 
-        Position emptyElementPosition = new Position(-1,-1);
+        Position emptyElementPosition = new Position(-1, -1);
 
         for (int i = 0; i < sudokuBoard.getBoard().size(); i++) {
             SudokuRow theRow = sudokuBoard.getRow(i);
@@ -209,8 +209,8 @@ public class SudokuGame {
     public void guessValue(int row, int column) {
         try {
             SudokuElement sudokuElement = sudokuBoard.getRow(row).getElement(column);
-            Position position = new Position(row,column);
-            if(sudokuElement.getFulfillmentOptions().size()>0){
+            Position position = new Position(row, column);
+            if (sudokuElement.getFulfillmentOptions().size() > 0) {
                 int option = sudokuElement.getFulfillmentOptions().get(0);
                 backtrackQueue.push(new Backtrack(sudokuBoard.deepCopy(), position, option));
                 setBoardElement(row, column, option);

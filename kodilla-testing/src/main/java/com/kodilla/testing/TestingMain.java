@@ -4,12 +4,12 @@ import com.kodilla.testing.calculator.Calculator;
 import com.kodilla.testing.user.SimpleUser;
 
 public class TestingMain {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SimpleUser simpleUser = new SimpleUser("a", "a");
 
         String result = simpleUser.getUsername();
 
-        if (result.equals("a")){
+        if (result.equals("a")) {
             System.out.println("test1 OK");
         } else {
             System.out.println("test1 Error!");

@@ -36,7 +36,7 @@ public class ShapeCollectorTestSuite {
         //When
         shapeCollector.addFigure(circle1);
         //Then
-        Assert.assertEquals(shapeCollector.listSize(),1);
+        Assert.assertEquals(shapeCollector.listSize(), 1);
     }
 
     @Test

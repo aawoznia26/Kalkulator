@@ -37,7 +37,7 @@ public final class Board {
                 '}';
     }
 
-    public List<Task> getUserTasks(User user){
+    public List<Task> getUserTasks(User user) {
         List<Task> tasks = getTaskLists().stream()
                 .flatMap(l -> l.getTasks().stream())
                 .filter(t -> t.getAssignedUser().equals(user))

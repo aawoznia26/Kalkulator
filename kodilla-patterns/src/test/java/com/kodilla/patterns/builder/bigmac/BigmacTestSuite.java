@@ -20,7 +20,7 @@ public class BigmacTestSuite {
         int howManyIngredients = bigmac.getIngrediens().size();
 
         //Then
-        Assert.assertEquals(3,howManyIngredients);
+        Assert.assertEquals(3, howManyIngredients);
 
     }
 

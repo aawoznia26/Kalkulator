@@ -9,13 +9,12 @@ public class Beautyfier_main {
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         String textToDecorate1 = "Freddie Mercury";
         String textToDecorate2 = "Michael Jackson";
-        String decor1 ="★·.·´¯`·.·★";
+        String decor1 = "★·.·´¯`·.·★";
         String decor2 = "•♬•♫•.";
 
 
-
         System.out.println(poemBeautifier.beautify(textToDecorate1, (text) -> {
-            for (int i = 0; i < textToDecorate1.length(); i++){
+            for (int i = 0; i < textToDecorate1.length(); i++) {
                 if (i == 0) {
                     text = textToDecorate1.charAt(i) + "♡";
                 } else {

@@ -36,7 +36,7 @@ public class Player {
             } catch (InputMismatchException e) {
                 System.out.println("Wprowadź 1 - kamień, 2 - papier, 3 - nożyce");
 
-            } catch(ArrayIndexOutOfBoundsException e) {
+            } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Ten ruch jest niedozwolony! Spróbuj ponownie.");
             }
 

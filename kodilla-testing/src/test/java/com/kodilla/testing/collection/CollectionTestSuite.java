@@ -27,7 +27,7 @@ public class CollectionTestSuite {
     };
 
     @Test
-    public void testOddNumbersExterminatorEmptyList(){
+    public void testOddNumbersExterminatorEmptyList() {
 
 
         //Given
@@ -42,7 +42,7 @@ public class CollectionTestSuite {
     }
 
     @Test
-    public void testOddNumbersExterminatorNormalList(){
+    public void testOddNumbersExterminatorNormalList() {
         //Given
         List<Integer> normalList = new ArrayList<Integer>();
         normalList.add(7);
@@ -58,7 +58,7 @@ public class CollectionTestSuite {
         //When
         ArrayList<Integer> result = oddNumbersExterminator.exterminate((ArrayList<Integer>) normalList);
         //Then
-        Assert.assertEquals(expectedResult,result);
+        Assert.assertEquals(expectedResult, result);
 
     }
 }

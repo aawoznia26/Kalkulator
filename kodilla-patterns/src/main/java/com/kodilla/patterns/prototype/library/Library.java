@@ -25,16 +25,16 @@ public final class Library extends Prototype {
         this.name = name;
     }
 
-    public Library shallowCopy() throws CloneNotSupportedException{
-        return (Library)super.clone();
+    public Library shallowCopy() throws CloneNotSupportedException {
+        return (Library) super.clone();
 
     }
 
-    public Library deepCopy() throws CloneNotSupportedException{
-        Library copiedLibrary = (Library)super.clone();
+    public Library deepCopy() throws CloneNotSupportedException {
+        Library copiedLibrary = (Library) super.clone();
         copiedLibrary.books = new HashSet<>();
-        for(Book book : books){
-            copiedLibrary.getBooks().add(new Book(book.getTitle(),book.getAuthor(), book.getPublicationDate()));
+        for (Book book : books) {
+            copiedLibrary.getBooks().add(new Book(book.getTitle(), book.getAuthor(), book.getPublicationDate()));
         }
         return copiedLibrary;
     }

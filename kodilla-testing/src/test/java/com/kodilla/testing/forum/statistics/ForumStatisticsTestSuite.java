@@ -18,7 +18,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             users.add("a");
         }
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -26,14 +26,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(1000);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {100.0, 1000.0, 1000.0, 10.0, 10.0, 1.0 };
+        double[] expected = {100.0, 1000.0, 1000.0, 10.0, 10.0, 1.0};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
     }
 
@@ -42,7 +42,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             users.add("a");
         }
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -50,14 +50,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(1000);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {100.0, 1000.0, 1000.0, 10.0, 10.0, 1.0 };
+        double[] expected = {100.0, 1000.0, 1000.0, 10.0, 10.0, 1.0};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
     }
 
@@ -66,7 +66,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             users.add("a");
         }
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -74,14 +74,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(0);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {100.0, 1000.0, 0.0, 10.0, 0.0, 0.0 };
+        double[] expected = {100.0, 1000.0, 0.0, 10.0, 0.0, 0.0};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
     }
 
@@ -90,7 +90,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             users.add("a");
         }
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -98,14 +98,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(354);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {100.0, 1000.0, 354.0, 10.0, 3.54, 0.35 };
+        double[] expected = {100.0, 1000.0, 354.0, 10.0, 3.54, 0.35};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
     }
 
@@ -114,7 +114,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             users.add("a");
         }
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -122,14 +122,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(4700);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {100.0, 1000.0, 4700.0, 10.00, 47.00, 4.7 };
+        double[] expected = {100.0, 1000.0, 4700.0, 10.00, 47.00, 4.7};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
     }
 
@@ -144,14 +144,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(1000);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {0.0, 1000.0, 1000.0, Infinity, Infinity, 1.0 };
+        double[] expected = {0.0, 1000.0, 1000.0, Infinity, Infinity, 1.0};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
     }
 
@@ -160,7 +160,7 @@ public class ForumStatisticsTestSuite {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<String>();
-        for(int i =0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             users.add("a");
         }
         when(statisticsMock.usersNames()).thenReturn(users);
@@ -168,14 +168,14 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(1000);
 
         CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        double[] expected = {100.0, 1000.0, 1000.0, 10.0, 10.0, 1.0 };
+        double[] expected = {100.0, 1000.0, 1000.0, 10.0, 10.0, 1.0};
 
         //When
         calculateStatistics.calculateAdvStatistics(statisticsMock);
         double[] statistics = calculateStatistics.showStatistics();
 
         //Then
-        Assert.assertArrayEquals(expected, statistics,0.005);
+        Assert.assertArrayEquals(expected, statistics, 0.005);
 
 
     }

@@ -23,7 +23,7 @@ public class CalculatorTestSuite {
         //When
         double c = calculator.add(a, b);
         //Then
-        Assert.assertEquals(11,c, 0.01);
+        Assert.assertEquals(11, c, 0.01);
     }
 
     @Test

@@ -10,12 +10,12 @@ public class OddNumbersExterminator {
         this.evenNumbers = evenNumbers;
     }
 
-    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers){
-       for (Integer theNumber:numbers) {
-           if ((theNumber % 2) == 0) {
-               evenNumbers.add(theNumber);
-           }
-       }
-       return new ArrayList<Integer>(evenNumbers);
-   }
+    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers) {
+        for (Integer theNumber : numbers) {
+            if ((theNumber % 2) == 0) {
+                evenNumbers.add(theNumber);
+            }
+        }
+        return new ArrayList<Integer>(evenNumbers);
+    }
 }

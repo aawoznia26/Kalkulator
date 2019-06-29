@@ -2,11 +2,12 @@ package com.kodilla.good.patterns.challenges.ecommerce.order;
 
 
 import com.kodilla.good.patterns.challenges.ecommerce.Product;
+
 import java.time.Instant;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class BasketServiceImpl implements BasketService{
+public class BasketServiceImpl implements BasketService {
 
     private AtomicInteger basketIdGenerator = new AtomicInteger();
 

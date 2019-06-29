@@ -5,15 +5,6 @@ For further reference, please consider the following sections:
 
 * [Official Gradle documentation](https://docs.gradle.org)
 
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
-* [Managing Transactions](https://spring.io/guides/gs/managing-transactions/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-* [Validating Form Input](https://spring.io/guides/gs/validating-form-input/)
-
 ### Additional Links
 These additional references should also help you:
 

@@ -26,7 +26,7 @@ public class TaskListDaoTestSuite {
 
 
     @Test
-    public void testFindByListName(){
+    public void testFindByListName() {
 
         //Given
         String listName = "Sport Activities";

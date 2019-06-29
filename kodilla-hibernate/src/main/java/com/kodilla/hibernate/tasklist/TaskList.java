@@ -23,7 +23,7 @@ public class TaskList {
     public TaskList() {
     }
 
-    @Column(name="ID", unique=true)
+    @Column(name = "ID", unique = true)
     @NotNull
     @Id
     @GeneratedValue
@@ -31,13 +31,13 @@ public class TaskList {
         return id;
     }
 
-    @Column(name="LIST_NAME")
+    @Column(name = "LIST_NAME")
     @NotNull
     public String getListName() {
         return listName;
     }
 
-    @Column(name="DESCRIPTION")
+    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }

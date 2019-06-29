@@ -6,7 +6,7 @@ import com.kodilla.good.patterns.challenges.aviationbusiness.search.DesiredSearc
 
 import java.util.List;
 
-public class ResultDisplayer implements InformationService{
+public class ResultDisplayer implements InformationService {
     private List<Flight> searchResult;
     private InMemoryFlightRepository inMemoryFlightRepository;
 
@@ -15,7 +15,7 @@ public class ResultDisplayer implements InformationService{
         this.inMemoryFlightRepository = inMemoryFlightRepository;
     }
 
-    public void inform () {
+    public void inform() {
         System.out.println("Loty jakie dla Ciebie znaleźliśmy:");
 
         for (Flight flight : searchResult) {

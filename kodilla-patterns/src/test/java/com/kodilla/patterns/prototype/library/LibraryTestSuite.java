@@ -17,8 +17,8 @@ public class LibraryTestSuite {
                 .forEach(n -> library.getBooks().add(new Book("Książka " + n, "Autor " + n,
                         LocalDate.of(1998, 8, 1 + n))));
 
-        Book toRemoveBook = new Book ("Do usunięcia", "Do usunięcia",
-                LocalDate.of(1900,1,1));
+        Book toRemoveBook = new Book("Do usunięcia", "Do usunięcia",
+                LocalDate.of(1900, 1, 1));
         library.getBooks().add(toRemoveBook);
 
         //When

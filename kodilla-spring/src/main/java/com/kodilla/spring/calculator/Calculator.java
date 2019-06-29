@@ -13,7 +13,9 @@ public class Calculator {
         double c = a + b;
         display.displayValue(c);
         return c;
-    };
+    }
+
+    ;
 
     public double sub(double a, double b) {
         double c = a - b;

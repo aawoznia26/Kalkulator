@@ -5,5 +5,5 @@ import com.kodilla.good.patterns.challenges.aviationbusiness.FlightAttributes;
 
 public interface FlightRepository {
 
-        void addFlightToRepository(Flight flight, FlightAttributes flightAtributes);
+    void addFlightToRepository(Flight flight, FlightAttributes flightAtributes);
 }

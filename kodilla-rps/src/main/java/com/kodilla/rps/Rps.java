@@ -48,7 +48,7 @@ public class Rps {
 
             playerMoves.add(playerMove);
 
-            RoundResult roundResult = gameMap.get(new GameRound(computerMove,playerMove));
+            RoundResult roundResult = gameMap.get(new GameRound(computerMove, playerMove));
 
             switch (roundResult) {
                 case COMPUTER_WIN:
@@ -98,7 +98,7 @@ public class Rps {
         List<Character> availableResults = new ArrayList(Arrays.asList('n', 'x'));
         Scanner endGameScanner = new Scanner(System.in);
         Character result;
-        do{
+        do {
             System.out.println("Jeśli chcesz rozpocząć nową grę wciśnij n, aby zakończyć wybierz x");
             result = endGameScanner.next().charAt(0);
         } while (!availableResults.contains(result));
@@ -115,7 +115,7 @@ public class Rps {
 
     }
 
-    public Move getComputerMove(Player computer){
+    public Move getComputerMove(Player computer) {
         Move computerMove = null;
 
         if (rundNumber >= 2 && playerRoundResult == 1) {

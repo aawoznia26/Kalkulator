@@ -1,6 +1,7 @@
 package com.kodilla.stream.portfolio;
 
 import java.time.LocalDate;
+
 import com.kodilla.stream.portfolio.User;
 
 public final class Task {

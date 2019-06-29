@@ -2,7 +2,7 @@ package com.kodilla.patterns.strategy.social.publisher;
 
 public class SnapchatPublisher implements SocialPublisher {
 
-    public String share (){
+    public String share() {
         return "Snapchat";
     }
 }

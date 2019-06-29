@@ -8,7 +8,7 @@ public class ShapeCollector {
     private List<Shape> shapeCollection = new ArrayList<Shape>();
 
 
-    public void addFigure(Shape shape){
+    public void addFigure(Shape shape) {
         shapeCollection.add(shape);
     }
 
@@ -17,16 +17,16 @@ public class ShapeCollector {
     }
 
 
-    public Shape getFigure(int n){
+    public Shape getFigure(int n) {
         Shape figure = shapeCollection.get(n);
         return figure;
     }
 
-    public List<Shape> showFigures(){
+    public List<Shape> showFigures() {
         return Collections.unmodifiableList(shapeCollection);
     }
 
-    public int listSize(){
+    public int listSize() {
         int shapeCollectionSize = shapeCollection.size();
         return shapeCollectionSize;
     }

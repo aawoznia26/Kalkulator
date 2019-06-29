@@ -4,9 +4,9 @@ public class ExceptionHandling {
     public void handleException() throws MyException {
         SecondChallenge secondChallenge = new SecondChallenge();
 
-        try{
+        try {
             secondChallenge.probablyIWillThrowException(5, 6);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new MyException();
         }
     }

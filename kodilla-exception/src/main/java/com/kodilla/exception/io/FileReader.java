@@ -11,9 +11,9 @@ public class FileReader {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("file/names.txt").getFile());
 
-        try (Stream<String> fileLines = Files.lines(Paths.get("file/trt.txt"))){
+        try (Stream<String> fileLines = Files.lines(Paths.get("file/trt.txt"))) {
             fileLines.forEach(System.out::println);
-        }catch (IOException e) {
+        } catch (IOException e) {
             throw new FileReaderException();
         }
 

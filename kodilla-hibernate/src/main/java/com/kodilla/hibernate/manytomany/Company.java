@@ -4,12 +4,20 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+@NamedNativeQueries({
 
-@NamedNativeQuery(
+        @NamedNativeQuery(
         name = "Company.retrieveCompaniesWithNamesPrefix",
         query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3 )= :PREFIX",
         resultClass = Company.class
-)
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompaniesWithNamesPhrase",
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE :ARG",
+                resultClass = Company.class
+        )
+
+})
 
 @Entity
 @Table(name = "COMPANIES")
@@ -39,7 +47,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany( mappedBy = "companies", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "companies", fetch = FetchType.EAGER)
     public List<Employee> getEmployees() {
         return employees;
     }

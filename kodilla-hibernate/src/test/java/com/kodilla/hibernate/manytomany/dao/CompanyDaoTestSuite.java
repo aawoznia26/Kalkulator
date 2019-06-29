@@ -113,9 +113,9 @@ public class CompanyDaoTestSuite {
 
         //CleanUp
         try {
-        companyDao.deleteById(softwareMachineId);
-        companyDao.deleteById(dataMaestersId);
-        companyDao.deleteById(greyMatterId);
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             e.printStackTrace();
             //do nothing
