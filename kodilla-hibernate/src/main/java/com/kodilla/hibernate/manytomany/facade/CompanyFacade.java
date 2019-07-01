@@ -25,16 +25,11 @@ public class CompanyFacade {
     public void findCompanyWithPhaseInName(String phase){
         LOGGER.info("Search for company with phase: '" + phase + "' in name started");
 
-        try {
-            List<Company> foundCompanies = companyDao.retrieveCompaniesWithNamesPhrase("%" + phase + "%");
-            if(foundCompanies.size()<1){
-                LOGGER.error(SearchProcessingException.ERR_COMPANY_NOT_FOUND);
-                throw new SearchProcessingException(SearchProcessingException.ERR_COMPANY_NOT_FOUND);
-            }
+        List<Company> foundCompanies = companyDao.retrieveCompaniesWithNamesPhrase("%" + phase + "%");
+        if(foundCompanies.size()<1){
+            LOGGER.info("No companies with phrase '" + phase + "'");
+        } else {
             LOGGER.info(foundCompanies.size() + " companies have been found");
-
-        } catch (SearchProcessingException e){
-
         }
 
     }
@@ -42,16 +37,11 @@ public class CompanyFacade {
     public void findEmployeeWithPhaseInLastName(String phase){
         LOGGER.info("Search for employee with phase: '" + phase + "' in last name started");
 
-        try {
-            List<Employee> foundEmployees = employeeDao.retrieveEmployeesWithNamesPhrase("%" + phase + "%");
-            if(foundEmployees.size()<1){
-                LOGGER.error(SearchProcessingException.ERR_EMPLOYEE_NOT_FOUND);
-                throw new SearchProcessingException(SearchProcessingException.ERR_EMPLOYEE_NOT_FOUND);
-            }
+        List<Employee> foundEmployees = employeeDao.retrieveEmployeesWithNamesPhrase("%" + phase + "%");
+        if(foundEmployees.size()<1){
+            LOGGER.info("No employees with phrase '" + phase + "'");
+        } else {
             LOGGER.info(foundEmployees.size() + " employees have been found");
-
-        } catch (SearchProcessingException e){
-
         }
 
     }
